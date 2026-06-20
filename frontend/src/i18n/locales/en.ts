@@ -123,6 +123,15 @@ export default {
       contact: 'Contact Us'
     }
   },
+  contact: {
+    title: 'Contact Us',
+    description: 'Reach out to our team via WeChat or email for support and inquiries.',
+    wechatTitle: 'WeChat',
+    wechatDescription: 'Scan the QR code below to connect with our official WeChat support account.',
+    qrLoading: 'Generating QR code...',
+    emailTitle: 'Email',
+    emailDescription: 'Send your questions to this email address.'
+  },
 
   // Key Usage Query Page
   keyUsage: {
