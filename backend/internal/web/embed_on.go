@@ -5,7 +5,9 @@ package web
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
 	"embed"
+	"encoding/hex"
 	"encoding/json"
 	"io"
 	"io/fs"
@@ -13,9 +15,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 
-	"github.com/Wei-Shaw/sub2api/internal/server/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -143,8 +143,27 @@ func (s *FrontendServer) serveIndexHTML(c *gin.Context) {
 	// Serve the embedded frontend HTML without injecting public settings.
 	// Frontend should load its initial config via API calls instead of relying
 	// on backend-side SSR injection.
+	etag := generateETag(s.baseHTML)
+	if match := c.GetHeader("If-None-Match"); match != "" {
+		// If the client or CDN already has the same version, return 304.
+		if strings.TrimSpace(match) == etag {
+			c.Header("ETag", etag)
+			c.Header("Cache-Control", "no-cache")
+			c.Status(http.StatusNotModified)
+			c.Abort()
+			return
+		}
+	}
+
+	c.Header("ETag", etag)
+	c.Header("Cache-Control", "no-cache")
 	c.Data(http.StatusOK, "text/html; charset=utf-8", s.baseHTML)
 	c.Abort()
+}
+
+func generateETag(content []byte) string {
+	hash := sha256.Sum256(content)
+	return `"` + hex.EncodeToString(hash[:8]) + `"`
 }
 
 func (s *FrontendServer) injectSettings(settingsJSON []byte) []byte {
