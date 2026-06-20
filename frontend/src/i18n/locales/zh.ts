@@ -123,6 +123,15 @@ export default {
       contact: '联系我们'
     }
   },
+  contact: {
+    title: '联系我们',
+    description: '通过微信或邮箱联系我们的团队，获取支持与咨询。',
+    wechatTitle: '微信',
+    wechatDescription: '扫描下方二维码，连接我们的官方微信客服账号。',
+    qrLoading: '正在生成二维码...',
+    emailTitle: '邮箱',
+    emailDescription: '将您的问题发送到以下邮箱地址。'
+  },
 
   // Key Usage Query Page
   keyUsage: {
