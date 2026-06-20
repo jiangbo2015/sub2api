@@ -99,17 +99,21 @@ func SecurityHeaders(cfg config.CSPConfig, getFrameSrcOrigins func() []string) g
 			return
 		}
 
-		if cfg.Enabled {
-			// Generate nonce for this request
-			nonce, err := GenerateNonce()
-			if err != nil {
-				// crypto/rand 失败时降级为无 nonce 的 CSP 策略
-				log.Printf("[SecurityHeaders] %v — 降级为无 nonce 的 CSP", err)
-				c.Header("Content-Security-Policy", strings.ReplaceAll(finalPolicy, NonceTemplate, "'unsafe-inline'"))
-			} else {
-				c.Set(CSPNonceKey, nonce)
-				c.Header("Content-Security-Policy", strings.ReplaceAll(finalPolicy, NonceTemplate, "'nonce-"+nonce+"'"))
-			}
+		if !cfg.Enabled {
+			c.Writer.Header().Del("Content-Security-Policy")
+			c.Next()
+			return
+		}
+
+		// Generate nonce for this request
+		nonce, err := GenerateNonce()
+		if err != nil {
+			// crypto/rand 失败时降级为无 nonce 的 CSP 策略
+			log.Printf("[SecurityHeaders] %v — 降级为无 nonce 的 CSP", err)
+			c.Header("Content-Security-Policy", strings.ReplaceAll(finalPolicy, NonceTemplate, "'unsafe-inline'"))
+		} else {
+			c.Set(CSPNonceKey, nonce)
+			c.Header("Content-Security-Policy", strings.ReplaceAll(finalPolicy, NonceTemplate, "'nonce-"+nonce+"'"))
 		}
 		c.Next()
 	}
