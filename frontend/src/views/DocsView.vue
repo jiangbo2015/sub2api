@@ -28,7 +28,7 @@
                   :href="`#${item.id}`"
                   class="block rounded-lg px-3 py-2 text-sm transition-colors"
                   :class="activeSection === item.id
-                    ? 'bg-[#F5E6D8] font-medium text-primary-800 dark:bg-primary-900/30 dark:text-primary-200'
+                    ? 'bg-primary-200 font-medium text-primary-800 dark:bg-primary-900/30 dark:text-primary-200'
                     : 'text-gray-600 hover:bg-white/60 hover:text-primary-700 dark:text-dark-300 dark:hover:bg-dark-800 dark:hover:text-primary-300'"
                   @click.prevent="navigateToSection(item.id)"
                 >
@@ -49,7 +49,7 @@
             </p>
 
             <div class="mt-6 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 dark:border-emerald-800/40 dark:bg-emerald-900/20">
-              <span class="material-symbols-outlined mt-0.5 text-[20px] text-emerald-600 dark:text-emerald-400">lightbulb</span>
+              <Icon name="lightbulb" size="md" class="mt-0.5 text-emerald-600 dark:text-emerald-400" />
               <p class="text-sm leading-relaxed text-emerald-800 dark:text-emerald-200">{{ t('docs.nodejs.tip') }}</p>
             </div>
 
@@ -99,7 +99,7 @@
             </p>
 
             <div class="mt-6 flex items-start gap-3 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 dark:border-blue-800/40 dark:bg-blue-900/20">
-              <span class="material-symbols-outlined mt-0.5 text-[20px] text-blue-600 dark:text-blue-400">info</span>
+              <Icon name="infoCircle" size="md" class="mt-0.5 text-blue-600 dark:text-blue-400" />
               <p class="text-sm leading-relaxed text-blue-800 dark:text-blue-200">{{ t('docs.codex.note') }}</p>
             </div>
 
@@ -167,7 +167,7 @@
             </div>
 
             <div class="mt-6 flex items-start gap-3 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 dark:border-blue-800/40 dark:bg-blue-900/20">
-              <span class="material-symbols-outlined mt-0.5 text-[20px] text-blue-600 dark:text-blue-400">info</span>
+              <Icon name="infoCircle" size="md" class="mt-0.5 text-blue-600 dark:text-blue-400" />
               <p class="text-sm leading-relaxed text-blue-800 dark:text-blue-200">{{ t('docs.geminiCli.note') }}</p>
             </div>
           </section>
@@ -186,6 +186,7 @@ import { useI18n } from 'vue-i18n'
 import LandingNav from '@/components/layout/LandingNav.vue'
 import LandingFooter from '@/components/layout/LandingFooter.vue'
 import DocsCodeBlock from '@/components/docs/DocsCodeBlock.vue'
+import Icon from '@/components/icons/Icon.vue'
 
 const SECTION_IDS = {
   nodejs: 'Nodejs',

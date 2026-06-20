@@ -89,7 +89,7 @@
           <div v-for="tool in tools" :key="tool.name" class="group flex flex-col justify-between rounded-2xl bg-white p-7 shadow-sm transition-all hover:shadow-lg dark:bg-dark-900 dark:border dark:border-dark-700">
             <div>
               <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50">
-                <span class="material-symbols-outlined text-[28px] text-primary-600">{{ tool.icon }}</span>
+                <Icon :name="tool.icon" size="lg" class="text-primary-600" />
               </div>
               <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">{{ tool.name }}</h3>
               <p class="mb-6 text-sm leading-relaxed text-gray-500 dark:text-dark-300">{{ tool.desc }}</p>
@@ -115,15 +115,15 @@
               <p class="mb-8 text-sm text-gray-500">{{ t('index.pricing.paygo.subtitle') }}</p>
               <ul class="mb-8 space-y-4">
                 <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.paygo.feature1') }}</span>
                 </li>
                 <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.paygo.feature2') }}</span>
                 </li>
                 <li class="flex items-start gap-2 text-sm text-primary-600 font-semibold">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.paygo.feature3') }}</span>
                 </li>
               </ul>
@@ -150,15 +150,15 @@
               <p class="mb-6 text-sm text-gray-500 dark:text-dark-300">{{ t('index.pricing.claude.description') }}</p>
               <ul class="mb-8 space-y-4">
                 <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.claude.feature1') }}</span>
                 </li>
                 <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.claude.feature2') }}</span>
                 </li>
                 <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.claude.feature3') }}</span>
                 </li>
               </ul>
@@ -175,7 +175,7 @@
             </div>
             <div>
               <div class="mb-4 flex items-center gap-2">
-                <span class="material-symbols-outlined text-[20px] text-gray-900 dark:text-white">auto_awesome</span>
+                <Icon name="auto_awesome" size="lg" class="text-gray-900 dark:text-white" />
                 <span class="text-base font-bold text-gray-900 dark:text-white">{{ t('index.pricing.chatgpt.title') }}</span>
               </div>
               <div class="mb-2">
@@ -185,15 +185,15 @@
               <p class="mb-6 text-sm text-gray-500 dark:text-dark-300">{{ t('index.pricing.chatgpt.description') }}</p>
               <ul class="mb-8 space-y-4">
                 <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.chatgpt.feature1') }}</span>
                 </li>
                 <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.chatgpt.feature2') }}</span>
                 </li>
                 <li class="flex items-start gap-2 text-sm text-gray-600">
-                  <span class="material-symbols-outlined mt-0.5 text-[18px] text-primary-500">check</span>
+                  <Icon name="check" size="sm" class="mt-0.5 text-primary-500" />
                   <span>{{ t('index.pricing.chatgpt.feature3') }}</span>
                 </li>
               </ul>
@@ -214,7 +214,7 @@
         <div class="grid gap-6 md:grid-cols-2">
           <div v-for="feature in features" :key="feature.title" class="rounded-2xl border border-gray-100 bg-white p-6 transition-all hover:shadow-md dark:border-dark-700 dark:bg-dark-900">
             <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50">
-              <span class="material-symbols-outlined text-[22px] text-primary-600">{{ feature.icon }}</span>
+              <Icon :name="feature.icon" size="md" class="text-primary-600" />
             </div>
             <h3 class="mb-2 text-base font-semibold text-gray-900">{{ feature.title }}</h3>
             <p class="text-sm leading-relaxed text-gray-500">{{ feature.desc }}</p>
@@ -228,18 +228,20 @@
       <div class="mx-auto max-w-3xl">
         <h2 class="mb-12 text-center text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">{{ t('index.faq.title') }}</h2>
         <div class="space-y-4">
-          <div v-for="(faq, idx) in faqs" :key="idx" class="rounded-xl border border-gray-100 bg-[#FDF6EE] dark:border-dark-700 dark:bg-dark-900">
+          <div v-for="(faq, idx) in faqs" :key="idx" class="rounded-xl border border-primary-100 bg-primary-100 dark:border-dark-700 dark:bg-dark-900">
             <button
               class="flex w-full items-center justify-between px-6 py-5 text-left"
               @click="toggleFaq(idx)"
             >
               <span class="pr-4 text-sm font-semibold text-gray-900 dark:text-white">{{ faq.q }}</span>
               <span
-                class="material-symbols-outlined shrink-0 text-[20px] text-primary-500 transition-transform duration-200"
+                class="shrink-0 text-[20px] text-primary-500 transition-transform duration-200"
                 :class="{ 'rotate-180': openFaq === idx }"
-              >expand_more</span>
+              >
+                <Icon name="expand_more" size="md" class="inline-flex" />
+              </span>
             </button>
-            <div v-show="openFaq === idx" class="border-t border-gray-100 px-6 pb-5 pt-4">
+            <div v-show="openFaq === idx" class="border-t border-primary-100 px-6 pb-5 pt-4">
               <p class="text-sm leading-relaxed text-gray-500 dark:text-dark-300">{{ faq.a }}</p>
             </div>
           </div>
@@ -259,7 +261,7 @@
           class="inline-flex items-center gap-2 rounded-full bg-primary-700 px-8 py-3 text-sm font-medium text-white shadow-lg shadow-primary-700/20 transition-all hover:bg-primary-800"
         >
           {{ isAuthenticated ? t('index.cta.enterConsole') : t('index.cta.freeRegister') }}
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          <Icon name="arrow_forward" size="sm" class="inline-flex" />
         </router-link>
       </div>
     </section>
@@ -284,6 +286,8 @@ import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAuthStore, useAppStore } from '@/stores'
 import LandingNav from '@/components/layout/LandingNav.vue'
+import Icon from '@/components/icons/Icon.vue'
+import type { IconName } from '@/components/icons/Icon.vue'
 
 const { t } = useI18n()
 
@@ -298,7 +302,7 @@ const isAdmin = computed(() => authStore.isAdmin)
 const dashboardPath = computed(() => isAdmin.value ? '/admin/dashboard' : '/dashboard')
 const currentYear = computed(() => new Date().getFullYear())
 
-const tools = computed(() => [
+const tools = computed<Array<{ name: string; icon: IconName; desc: string; tag: string }>>(() => [
   {
     name: t('index.tools.openclaw.name'),
     icon: 'auto_awesome',
@@ -325,7 +329,7 @@ const tools = computed(() => [
   },
 ])
 
-const features = computed(() => [
+const features = computed<Array<{ title: string; desc: string; icon: IconName }>>(() => [
   {
     title: t('index.features.globalCoverage.title'),
     desc: t('index.features.globalCoverage.desc'),
@@ -339,7 +343,7 @@ const features = computed(() => [
   {
     title: t('index.features.easyIntegration.title'),
     desc: t('index.features.easyIntegration.desc'),
-    icon: 'code',
+    icon: 'terminal',
   },
   {
     title: t('index.features.completeAudit.title'),
