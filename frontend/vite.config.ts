@@ -46,7 +46,7 @@ export default defineConfig(({ mode }) => {
       checker({
         vueTsc: true
       }),
-      injectPublicSettings(backendUrl)
+      // injectPublicSettings(backendUrl)
     ],
   resolve: {
     alias: {

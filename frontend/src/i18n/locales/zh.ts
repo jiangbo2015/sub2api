@@ -107,6 +107,20 @@ export default {
     },
     footer: {
       allRightsReserved: '保留所有权利。'
+    },
+    nav: {
+      modelPricing: '模型价格',
+      docs: '文档',
+      faq: '常见问题',
+      contact: '联系我们'
+    }
+  },
+  landing: {
+    nav: {
+      modelPricing: '模型价格',
+      docs: '文档',
+      faq: '常见问题',
+      contact: '联系我们'
     }
   },
 
@@ -187,8 +201,8 @@ export default {
 
   // Setup Wizard
   setup: {
-    title: 'Sub2API 安装向导',
-    description: '配置您的 Sub2API 实例',
+    title: 'PineAI.me 安装向导',
+    description: '配置您的 PineAI.me 实例',
     database: {
       title: '数据库配置',
       description: '连接到您的 PostgreSQL 数据库',
@@ -1588,7 +1602,7 @@ export default {
         step1: {
           title: '创建 R2 存储桶',
           line1: '登录 Cloudflare Dashboard (dash.cloudflare.com)，左侧菜单选择「R2 对象存储」',
-          line2: '点击「创建存储桶」，输入名称（如 sub2api-backups），选择区域',
+          line2: '点击「创建存储桶」，输入名称（如 PineAI.me-backups），选择区域',
           line3: '点击创建完成'
         },
         step2: {
@@ -3216,7 +3230,7 @@ export default {
         expiresAt: '过期时间',
         actions: '操作'
       },
-      usageWindowsHint: '“5h / 7d”是上游账号（如 OpenAI ChatGPT、Claude）官方的滚动用量窗口限制，由上游对账号设定，并非 sub2api 配置，也与你映射的模型无关。窗口滚动到期后用量会自动重置，无法在 sub2api 端解除该限制。',
+      usageWindowsHint: '“5h / 7d”是上游账号（如 OpenAI ChatGPT、Claude）官方的滚动用量窗口限制，由上游对账号设定，并非 PineAI.me 配置，也与你映射的模型无关。窗口滚动到期后用量会自动重置，无法在 PineAI.me 端解除该限制。',
       allPrivacyModes: '全部Privacy状态',
       privacyUnset: '未设置',
       privacyTrainingOff: '已关闭训练数据共享',
@@ -3682,7 +3696,7 @@ export default {
       poolMode: '池模式',
       poolModeHint: '上游为账号池时启用，错误不标记本地账号状态',
       poolModeInfo:
-        '启用后，上游 429/403/401 错误将自动重试而不标记账号限流或错误，适用于上游指向另一个 sub2api 实例的场景。',
+        '启用后，上游 429/403/401 错误将自动重试而不标记账号限流或错误，适用于上游指向另一个 PineAI.me 实例的场景。',
       poolModeRetryCount: '同账号重试次数',
       poolModeRetryCountHint: '仅在池模式下生效。0 表示不原地重试；默认 {default}，最大 {max}。',
       poolModeRetryStatusCodes: '同账号重试状态码',
@@ -5726,7 +5740,7 @@ export default {
       },
       linuxdo: {
         title: 'LinuxDo Connect 登录',
-        description: '配置 LinuxDo Connect OAuth，用于 Sub2API 用户登录',
+        description: '配置 LinuxDo Connect OAuth，用于 PineAI.me 用户登录',
         enable: '启用 LinuxDo 登录',
         enableHint: '在登录/注册页面显示 LinuxDo 登录入口',
         clientId: 'Client ID',
@@ -5745,7 +5759,7 @@ export default {
       },
       dingtalk: {
         title: '钉钉登录',
-        description: '配置钉钉 OAuth，用于 Sub2API 用户登录',
+        description: '配置钉钉 OAuth，用于 PineAI.me 用户登录',
         enable: '启用钉钉登录-企业内部应用',
         enableHint: '在登录/注册页面显示钉钉登录入口',
         clientId: 'Client ID（AppKey）',
@@ -5968,7 +5982,7 @@ export default {
           '禁用用户注册、公开页面和自助服务功能。仅管理员可以登录和管理平台。',
         siteName: '站点名称',
         siteNameHint: '显示在邮件和页面标题中',
-        siteNamePlaceholder: 'Sub2API',
+        siteNamePlaceholder: 'PineAI.me',
         siteSubtitle: '站点副标题',
         siteSubtitleHint: '显示在登录和注册页面',
         siteSubtitlePlaceholder: '订阅转 API 转换平台',
@@ -6259,7 +6273,7 @@ export default {
         fromEmail: '发件人邮箱',
         fromEmailPlaceholder: "noreply{'@'}example.com",
         fromName: '发件人名称',
-        fromNamePlaceholder: 'Sub2API',
+        fromNamePlaceholder: 'PineAI.me',
         useTls: '使用 TLS',
         useTlsHint: '为 SMTP 连接启用 TLS 加密'
       },
@@ -6905,16 +6919,16 @@ export default {
     // Admin tour steps
     admin: {
       welcome: {
-        title: '👋 欢迎使用 Sub2API',
+        title: '👋 欢迎使用 PineAI.me',
         description:
-          '<div style="line-height: 1.8;"><p style="margin-bottom: 16px;">Sub2API 是一个强大的 AI 服务中转平台，让您轻松管理和分发 AI 服务。</p><p style="margin-bottom: 12px;"><b>🎯 核心功能：</b></p><ul style="margin-left: 20px; margin-bottom: 16px;"><li>📦 <b>分组管理</b> - 创建不同的服务套餐（VIP、免费试用等）</li><li>🔗 <b>账号池</b> - 连接多个上游 AI 服务商账号</li><li>🔑 <b>密钥分发</b> - 为用户生成独立的 API Key</li><li>💰 <b>计费管理</b> - 灵活的费率和配额控制</li></ul><p style="color: #10b981; font-weight: 600;">接下来，我们将用 3 分钟带您完成首次配置 →</p></div>',
+          '<div style="line-height: 1.8;"><p style="margin-bottom: 16px;">PineAI.me 是一个强大的 AI 服务中转平台，让您轻松管理和分发 AI 服务。</p><p style="margin-bottom: 12px;"><b>🎯 核心功能：</b></p><ul style="margin-left: 20px; margin-bottom: 16px;"><li>📦 <b>分组管理</b> - 创建不同的服务套餐（VIP、免费试用等）</li><li>🔗 <b>账号池</b> - 连接多个上游 AI 服务商账号</li><li>🔑 <b>密钥分发</b> - 为用户生成独立的 API Key</li><li>💰 <b>计费管理</b> - 灵活的费率和配额控制</li></ul><p style="color: #10b981; font-weight: 600;">接下来，我们将用 3 分钟带您完成首次配置 →</p></div>',
         nextBtn: '开始配置 🚀',
         prevBtn: '跳过'
       },
       groupManage: {
         title: '📦 第一步：分组管理',
         description:
-          '<div style="line-height: 1.7;"><p style="margin-bottom: 12px;"><b>什么是分组？</b></p><p style="margin-bottom: 12px;">分组是 Sub2API 的核心概念，它就像一个"服务套餐"：</p><ul style="margin-left: 20px; margin-bottom: 12px; font-size: 13px;"><li>🎯 每个分组可以包含多个上游账号</li><li>💰 每个分组有独立的计费倍率</li><li>👥 可以设置为公开或专属分组</li></ul><p style="margin-top: 12px; padding: 8px 12px; background: #f0fdf4; border-left: 3px solid #10b981; border-radius: 4px; font-size: 13px;"><b>💡 示例：</b>您可以创建"VIP专线"（高倍率）和"免费试用"（低倍率）两个分组</p><p style="margin-top: 16px; color: #10b981; font-weight: 600;">👉 点击左侧的"分组管理"开始</p></div>'
+          '<div style="line-height: 1.7;"><p style="margin-bottom: 12px;"><b>什么是分组？</b></p><p style="margin-bottom: 12px;">分组是 PineAI.me 的核心概念，它就像一个"服务套餐"：</p><ul style="margin-left: 20px; margin-bottom: 12px; font-size: 13px;"><li>🎯 每个分组可以包含多个上游账号</li><li>💰 每个分组有独立的计费倍率</li><li>👥 可以设置为公开或专属分组</li></ul><p style="margin-top: 12px; padding: 8px 12px; background: #f0fdf4; border-left: 3px solid #10b981; border-radius: 4px; font-size: 13px;"><b>💡 示例：</b>您可以创建"VIP专线"（高倍率）和"免费试用"（低倍率）两个分组</p><p style="margin-top: 16px; color: #10b981; font-weight: 600;">👉 点击左侧的"分组管理"开始</p></div>'
       },
       createGroup: {
         title: '➕ 创建新分组',
@@ -7026,9 +7040,9 @@ export default {
     // User tour steps
     user: {
       welcome: {
-        title: '👋 欢迎使用 Sub2API',
+        title: '👋 欢迎使用 PineAI.me',
         description:
-          '<div style="line-height: 1.8;"><p style="margin-bottom: 16px;">您好！欢迎来到 Sub2API AI 服务平台。</p><p style="margin-bottom: 12px;"><b>🎯 快速开始：</b></p><ul style="margin-left: 20px; margin-bottom: 16px;"><li>🔑 创建 API 密钥</li><li>📋 复制密钥到您的应用</li><li>🚀 开始使用 AI 服务</li></ul><p style="color: #10b981; font-weight: 600;">只需 1 分钟，让我们开始吧 →</p></div>',
+          '<div style="line-height: 1.8;"><p style="margin-bottom: 16px;">您好！欢迎来到 PineAI.me AI 服务平台。</p><p style="margin-bottom: 12px;"><b>🎯 快速开始：</b></p><ul style="margin-left: 20px; margin-bottom: 16px;"><li>🔑 创建 API 密钥</li><li>📋 复制密钥到您的应用</li><li>🚀 开始使用 AI 服务</li></ul><p style="color: #10b981; font-weight: 600;">只需 1 分钟，让我们开始吧 →</p></div>',
         nextBtn: '开始 🚀',
         prevBtn: '跳过'
       },
@@ -7375,6 +7389,207 @@ export default {
         expired: '已过期',
         revoked: '已撤销',
       },
+    },
+  },
+
+  // Docs Page
+  docs: {
+    title: '接入文档',
+    quickStart: '快速上手',
+    copy: '复制',
+    copied: '已复制',
+    nav: {
+      nodejs: 'Node.js 环境安装教程',
+      codex: 'Codex 配置教程',
+      claudeCode: 'Claude Code 配置教程',
+      geminiCli: 'Gemini CLI 配置教程',
+    },
+    nodejs: {
+      title: 'Node.js 环境安装教程',
+      description: '在 Windows、macOS、Linux 安装 Node.js LTS，并验证 node/npm 命令可用。',
+      tip: '提示：后续的 Claude Code、Gemini CLI、Codex 都依赖 Node.js 运行环境。先完成本教程，再继续各自工具配置。',
+      windows: 'Windows',
+      windowsMethod1: '方法一：官方下载（推荐）—— 前往 Node.js 官网下载 LTS 安装包并安装。',
+      windowsMethod2: '方法二：使用 Chocolatey',
+      windowsMethod3: '方法三：使用 Scoop',
+      macos: 'macOS',
+      macosMethod1: '方法一：官方下载（推荐）—— 前往 Node.js 官网下载 macOS 安装包。',
+      macosMethod2: '方法二：使用 Homebrew',
+      linux: 'Linux',
+      linuxMethod1: '推荐通过 nvm 安装 LTS 版本，便于多版本管理：',
+      verify: '验证安装',
+      verifyDescription: '安装完成后，在终端执行以下命令，确认 node 和 npm 可用：',
+    },
+    codex: {
+      title: 'Codex 配置教程',
+      description: '将 API 密钥写入 Codex CLI 配置目录，即可通过本站中转访问 OpenAI Codex 模型。',
+      note: '请确保配置目录存在。macOS/Linux 可运行 mkdir -p ~/.codex；Windows 按 Win+R 输入 %userprofile%\\.codex 打开目录。',
+      configTitle: '配置文件',
+      configDescription: '在 ~/.codex 目录下创建 config.toml 和 auth.json，将 YOUR_API_KEY 替换为控制台中创建的 API 密钥。',
+      verifyTitle: '验证配置',
+      verifyDescription: '配置完成后，在终端运行 codex 命令测试连接是否正常。',
+    },
+    claudeCode: {
+      title: 'Claude Code 配置教程',
+      description: '通过环境变量或 VSCode 配置文件，将 Claude Code 指向本站 API 网关。',
+      envTitle: '环境变量配置',
+      envDescription: '将以下环境变量添加到终端配置文件（~/.bashrc、~/.zshrc）或直接在终端中运行。将 YOUR_API_KEY 替换为你的 API 密钥。',
+      vscodeTitle: 'VSCode 配置',
+      vscodeDescription: '如果使用 VSCode 版 Claude Code，可在 ~/.claude/settings.json 中写入以下配置：',
+    },
+    geminiCli: {
+      title: 'Gemini CLI 配置教程',
+      description: '通过环境变量配置 Gemini CLI，将请求转发至本站 Gemini 兼容端点。',
+      envTitle: '环境变量配置',
+      envDescription: '将以下环境变量添加到终端配置文件或直接在终端中运行。将 YOUR_API_KEY 替换为你的 API 密钥。',
+      note: '如果你有 Gemini 3 权限，可将 GEMINI_MODEL 修改为 gemini-3-pro-preview。',
+    },
+  },
+
+  // Model Pricing Page
+  modelPricing: {
+    title: '模型价格',
+    description: '以人民币默认展示官方价格和分组价格，方便直接比较成本。',
+    pricingRules: '计价规则',
+    pricingRulesText: '官方价格按$1=¥7折算 分组价格=官方价格×分组倍率+7',
+    example: '示例',
+    inputPrice: '输入价',
+    official: '官方',
+    groupPrice: '分组价格',
+    priceList: '价格列表',
+    officialPrice: '官方价格',
+    priceListNote: '官方价格按固定汇率$1=¥7折算成人民币,仅用于和分组价格对比。',
+    modelId: '模型 ID',
+    outputPrice: '输出价格',
+    cacheCreation: '缓存创建',
+    cacheRead: '缓存读取',
+    modelDescription: '描述',
+    groupIntroduction: '分组介绍',
+    discount: '折扣',
+    multiplier: '倍率',
+  },
+
+  // Index Page
+  index: {
+    hero: {
+      badge: 'The Universal AI Gateway',
+      title: '连接全球顶级',
+      titleHighlight: 'AI 大模型',
+      description: '为全球开发者与团队而生 —— 专线高速直连、无封号风险、余额永不过期。支持支付宝 / 微信支付，低延迟调用 Claude、ChatGPT、Gemini 等主流模型。',
+      enterConsole: '进入控制台',
+      viewPricing: '查看价格',
+    },
+    tools: {
+      subtitle: '兼容生态',
+      title: '支持的设备与 AI 编程工具',
+      openclaw: {
+        name: 'OpenClaw',
+        desc: '开源本地 AI 助手，运行在你自己的电脑上，通过聊天直接执行任务，不止对话，更能动手。',
+        tag: '开源 · 本地运行',
+      },
+      claudeCode: {
+        name: 'Claude Code',
+        desc: 'Anthropic 官方 CLI，原生支持 Extended Thinking 深度思考，写代码如自然对话般流畅。',
+        tag: 'ANTHROPIC 官方',
+      },
+      codex: {
+        name: 'Codex',
+        desc: 'OpenAI 官方编程代理，擅长大规模重构、Bug 修复与测试生成，长任务稳定不掉线。',
+        tag: 'OPENAI 官方',
+      },
+      geminiCli: {
+        name: 'Gemini CLI',
+        desc: 'Google 官方开源的终端 AI 代理，在命令行调用 Gemini 完成编码、调试与工作流自动化。',
+        tag: 'GOOGLE 官方',
+      },
+    },
+    pricing: {
+      subtitle: '定价方案',
+      title: '按量付费，按需使用',
+      description: '1 RMB = 1 USD，使用官方原生模型，享受更低折扣',
+      paygo: {
+        name: 'PAYGO',
+        title: '按量付费',
+        subtitle: '永不过期',
+        feature1: '充值金额，获得等价人民币额度',
+        feature2: '按实际使用付费',
+        feature3: '永不过期',
+        cta: '立即充值',
+      },
+      claude: {
+        title: 'Claude 按需付费',
+        ratio: '1:1',
+        ratioLabel: '（RMB:USD）',
+        description: '无需订阅，根据实际使用量灵活计费。',
+        feature1: '1 RMB = 1 USD，官方价格同步',
+        feature2: '支持 Claude 全系列模型',
+        feature3: '专为 Claude Code 优化',
+        cta: '立即开始',
+        recommended: '推荐',
+      },
+      chatgpt: {
+        title: 'ChatGPT 按需付费',
+        ratio: '1:1',
+        ratioLabel: '（RMB:USD）',
+        description: '无需订阅，根据实际使用量灵活计费。',
+        feature1: '1 RMB = 1 USD，官方价格同步',
+        feature2: '支持 OpenAI GPT 全系列模型',
+        feature3: '专为 CodeX 优化',
+        cta: '立即开始',
+        recommended: '推荐',
+      },
+    },
+    features: {
+      title: '释放你的编程潜能，让顶尖 AI 为你写代码',
+      subtitle: '稳定、快速、安全的 AI API 基础设施',
+      globalCoverage: {
+        title: '全球覆盖',
+        desc: '全球多节点部署，就近接入，低延迟访问，无需 VPN，任何地区均可稳定使用',
+      },
+      highAvailability: {
+        title: '高可用保障',
+        desc: '多账户池智能负载均衡，自动故障转移，99.9% 可用性保障，7×24 不间断服务',
+      },
+      easyIntegration: {
+        title: '简单集成',
+        desc: '兼容 OpenAI API 格式，仅需修改 Base URL 即可接入，支持所有主流 SDK 和框架',
+      },
+      completeAudit: {
+        title: '完整审计',
+        desc: '详细的用量统计和调用日志，按模型、按 Token 精确计费，账单透明可追溯',
+      },
+    },
+    faq: {
+      title: '常见问题解答',
+      q1: {
+        q: '什么是 Claude 镜像 API？与官方 API 有什么区别？',
+        a: '我们提供完全兼容官方 API 格式的代理服务。您只需将 Base URL 修改为我们的地址，即可无缝使用所有官方模型，无需担心地区限制和封号风险。',
+      },
+      q2: {
+        q: '支持哪些 AI 模型？',
+        a: '我们支持 Claude（Sonnet、Opus、Haiku）、GPT-4o、GPT-o1、Gemini Pro 等主流大模型，并持续接入最新发布的模型。',
+      },
+      q3: {
+        q: '如何保证服务稳定性？',
+        a: '我们采用多账户池负载均衡和自动故障转移机制，全球多节点部署确保低延迟接入。服务可用性保持在 99.9% 以上。',
+      },
+      q4: {
+        q: '余额会过期吗？',
+        a: '不会。您充值的余额永久有效，没有任何使用期限的限制，可以随时按需使用。',
+      },
+      q5: {
+        q: '如何开始使用？',
+        a: '注册账号 → 获取 API Key → 将 Base URL 设置为我们的地址 → 开始使用。整个过程只需几分钟。',
+      },
+    },
+    cta: {
+      title: '准备好提升您的 AI 应用了吗？',
+      description: '立即注册，获取您的专属 API Key，开始接入全球顶级 AI 大模型服务，让 AI 成为您开发流程的一部分',
+      enterConsole: '进入控制台',
+      freeRegister: '免费注册',
+    },
+    footer: {
+      allRightsReserved: 'All rights reserved.',
     },
   },
 

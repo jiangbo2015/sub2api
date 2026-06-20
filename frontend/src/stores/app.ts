@@ -12,7 +12,7 @@ import {
   type VersionInfo,
   type ReleaseInfo
 } from '@/api/admin/system'
-import { getPublicSettings as fetchPublicSettingsAPI } from '@/api/auth'
+// import { getPublicSettings as fetchPublicSettingsAPI } from '@/api/auth'
 
 export const useAppStore = defineStore('app', () => {
   // ==================== State ====================
@@ -25,7 +25,7 @@ export const useAppStore = defineStore('app', () => {
   // Public settings cache state
   const publicSettingsLoaded = ref<boolean>(false)
   const publicSettingsLoading = ref<boolean>(false)
-  const siteName = ref<string>('Sub2API')
+  const siteName = ref<string>('PineAI.me')
   const siteLogo = ref<string>('')
   const siteVersion = ref<string>('')
   const contactInfo = ref<string>('')
@@ -292,7 +292,7 @@ export const useAppStore = defineStore('app', () => {
       window.__APP_CONFIG__ = { ...config }
     }
     cachedPublicSettings.value = config
-    siteName.value = config.site_name || 'Sub2API'
+    siteName.value = config.site_name || 'PineAI.me'
     siteLogo.value = config.site_logo || ''
     siteVersion.value = config.version || ''
     contactInfo.value = config.contact_info || ''
@@ -371,7 +371,8 @@ export const useAppStore = defineStore('app', () => {
 
     publicSettingsLoading.value = true
     try {
-      const data = await fetchPublicSettingsAPI()
+      // const data = await fetchPublicSettingsAPI()
+      const data = {} as PublicSettings
       applySettings(data)
       return data
     } catch (error) {

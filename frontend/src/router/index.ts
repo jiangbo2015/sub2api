@@ -1,5 +1,5 @@
 /**
- * Vue Router configuration for Sub2API frontend
+ * Vue Router configuration for PineAI.me frontend
  * Defines all application routes with lazy loading and navigation guards
  */
 
@@ -33,7 +33,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import('@/views/HomeView.vue'),
+    component: () => import('@/views/IndexView.vue'),
     meta: {
       requiresAuth: false,
       title: 'Home'
@@ -164,6 +164,26 @@ const routes: RouteRecordRaw[] = [
     meta: {
       requiresAuth: false,
       title: 'Key Usage',
+    }
+  },
+  {
+    path: '/model-pricing',
+    name: 'ModelPricing',
+    component: () => import('@/views/ModelPricingView.vue'),
+    meta: {
+      requiresAuth: false,
+      title: 'Model Pricing',
+      titleKey: 'modelPricing.title'
+    }
+  },
+  {
+    path: '/docs',
+    name: 'Docs',
+    component: () => import('@/views/DocsView.vue'),
+    meta: {
+      requiresAuth: false,
+      title: 'Docs',
+      titleKey: 'docs.title'
     }
   },
   {
@@ -671,10 +691,22 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior(_to, _from, savedPosition) {
+  scrollBehavior(to, _from, savedPosition) {
     // Scroll to saved position when using browser back/forward
     if (savedPosition) {
       return savedPosition
+    }
+    if (to.hash) {
+      return new Promise((resolve) => {
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            resolve({
+              el: to.hash,
+              behavior: 'smooth',
+            })
+          }, 100)
+        })
+      })
     }
     // Scroll to top for new routes
     return { top: 0 }
@@ -740,7 +772,7 @@ router.beforeEach(async (to, _from, next) => {
     const menuItem = publicItems.find((item) => item.id === id)
       ?? (authStore.isAdmin ? adminSettingsStore.customMenuItems.find((item) => item.id === id) : undefined)
     if (menuItem?.label) {
-      const siteName = appStore.siteName || 'Sub2API'
+      const siteName = appStore.siteName || 'PineAI.me'
       document.title = `${menuItem.label} - ${siteName}`
     } else {
       document.title = resolveDocumentTitle(to.meta.title, appStore.siteName, to.meta.titleKey as string)

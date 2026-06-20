@@ -107,6 +107,20 @@ export default {
     },
     footer: {
       allRightsReserved: 'All rights reserved.'
+    },
+    nav: {
+      modelPricing: 'Model Pricing',
+      docs: 'Docs',
+      faq: 'FAQ',
+      contact: 'Contact Us'
+    }
+  },
+  landing: {
+    nav: {
+      modelPricing: 'Model Pricing',
+      docs: 'Docs',
+      faq: 'FAQ',
+      contact: 'Contact Us'
     }
   },
 
@@ -187,8 +201,8 @@ export default {
 
   // Setup Wizard
   setup: {
-    title: 'Sub2API Setup',
-    description: 'Configure your Sub2API instance',
+    title: 'PineAI.me Setup',
+    description: 'Configure your PineAI.me instance',
     database: {
       title: 'Database Configuration',
       description: 'Connect to your PostgreSQL database',
@@ -1567,7 +1581,7 @@ export default {
         step1: {
           title: 'Create an R2 Bucket',
           line1: 'Log in to the Cloudflare Dashboard (dash.cloudflare.com), select "R2 Object Storage" from the sidebar',
-          line2: 'Click "Create bucket", enter a name (e.g. sub2api-backups), choose a region',
+          line2: 'Click "Create bucket", enter a name (e.g. PineAI.me-backups), choose a region',
           line3: 'Click create to finish'
         },
         step2: {
@@ -3178,7 +3192,7 @@ export default {
         expiresAt: 'Expires At',
         actions: 'Actions'
       },
-      usageWindowsHint: '"5h / 7d" are the upstream account\'s official rolling usage windows (e.g. OpenAI ChatGPT, Claude). They are imposed by the upstream provider on the account itself — not configured by sub2api, and unrelated to the models you map. Usage resets automatically once each window rolls over, and the limit cannot be lifted from within sub2api.',
+      usageWindowsHint: '"5h / 7d" are the upstream account\'s official rolling usage windows (e.g. OpenAI ChatGPT, Claude). They are imposed by the upstream provider on the account itself — not configured by PineAI.me, and unrelated to the models you map. Usage resets automatically once each window rolls over, and the limit cannot be lifted from within PineAI.me.',
       allPrivacyModes: 'All Privacy States',
       privacyUnset: 'Unset',
       privacyTrainingOff: 'Training data sharing disabled',
@@ -3529,7 +3543,7 @@ export default {
       poolMode: 'Pool Mode',
       poolModeHint: 'Enable when upstream is an account pool; errors won\'t mark local account status',
       poolModeInfo:
-        'When enabled, upstream 429/403/401 errors will auto-retry without marking the account as rate-limited or errored. Suitable for upstream pointing to another sub2api instance.',
+        'When enabled, upstream 429/403/401 errors will auto-retry without marking the account as rate-limited or errored. Suitable for upstream pointing to another PineAI.me instance.',
       poolModeRetryCount: 'Same-Account Retries',
       poolModeRetryCountHint:
         'Only applies in pool mode. Use 0 to disable in-place retry. Default {default}, maximum {max}.',
@@ -5566,7 +5580,7 @@ export default {
       },
       linuxdo: {
         title: 'LinuxDo Connect Login',
-        description: 'Configure LinuxDo Connect OAuth for Sub2API end-user login',
+        description: 'Configure LinuxDo Connect OAuth for PineAI.me end-user login',
         enable: 'Enable LinuxDo Login',
         enableHint: 'Show LinuxDo login on the login/register pages',
         clientId: 'Client ID',
@@ -5586,7 +5600,7 @@ export default {
       },
       dingtalk: {
         title: 'DingTalk Login',
-        description: 'Configure DingTalk OAuth for Sub2API end-user login',
+        description: 'Configure DingTalk OAuth for PineAI.me end-user login',
         enable: 'Enable DingTalk Login (Internal Corporate App)',
         enableHint: 'Show DingTalk login on the login/register pages',
         clientId: 'Client ID (AppKey)',
@@ -5813,7 +5827,7 @@ export default {
         backendModeDescription:
           'Disables user registration, public site, and self-service features. Only admin can log in and manage the platform.',
         siteName: 'Site Name',
-        siteNamePlaceholder: 'Sub2API',
+        siteNamePlaceholder: 'PineAI.me',
         siteNameHint: 'Displayed in emails and page titles',
         siteSubtitle: 'Site Subtitle',
         siteSubtitlePlaceholder: 'Subscription to API Conversion Platform',
@@ -6103,7 +6117,7 @@ export default {
         fromEmail: 'From Email',
         fromEmailPlaceholder: "noreply{'@'}example.com",
         fromName: 'From Name',
-        fromNamePlaceholder: 'Sub2API',
+        fromNamePlaceholder: 'PineAI.me',
         useTls: 'Use TLS',
         useTlsHint: 'Enable TLS encryption for SMTP connection'
       },
@@ -6752,14 +6766,14 @@ export default {
     // Admin tour steps
     admin: {
       welcome: {
-        title: '👋 Welcome to Sub2API',
-        description: '<div style="line-height: 1.8;"><p style="margin-bottom: 16px;">Sub2API is a powerful AI service gateway platform that helps you easily manage and distribute AI services.</p><p style="margin-bottom: 12px;"><b>🎯 Core Features:</b></p><ul style="margin-left: 20px; margin-bottom: 16px;"><li>📦 <b>Group Management</b> - Create service tiers (VIP, Free Trial, etc.)</li><li>🔗 <b>Account Pool</b> - Connect multiple upstream AI service accounts</li><li>🔑 <b>Key Distribution</b> - Generate independent API Keys for users</li><li>💰 <b>Billing Control</b> - Flexible rate and quota management</li></ul><p style="color: #10b981; font-weight: 600;">Let\'s complete the initial setup in 3 minutes →</p></div>',
+        title: '👋 Welcome to PineAI.me',
+        description: '<div style="line-height: 1.8;"><p style="margin-bottom: 16px;">PineAI.me is a powerful AI service gateway platform that helps you easily manage and distribute AI services.</p><p style="margin-bottom: 12px;"><b>🎯 Core Features:</b></p><ul style="margin-left: 20px; margin-bottom: 16px;"><li>📦 <b>Group Management</b> - Create service tiers (VIP, Free Trial, etc.)</li><li>🔗 <b>Account Pool</b> - Connect multiple upstream AI service accounts</li><li>🔑 <b>Key Distribution</b> - Generate independent API Keys for users</li><li>💰 <b>Billing Control</b> - Flexible rate and quota management</li></ul><p style="color: #10b981; font-weight: 600;">Let\'s complete the initial setup in 3 minutes →</p></div>',
         nextBtn: 'Start Setup 🚀',
         prevBtn: 'Skip'
       },
       groupManage: {
         title: '📦 Step 1: Group Management',
-        description: '<div style="line-height: 1.7;"><p style="margin-bottom: 12px;"><b>What is a Group?</b></p><p style="margin-bottom: 12px;">Groups are the core concept of Sub2API, like a "service package":</p><ul style="margin-left: 20px; margin-bottom: 12px; font-size: 13px;"><li>🎯 Each group can contain multiple upstream accounts</li><li>💰 Each group has independent billing multiplier</li><li>👥 Can be set as public or exclusive</li></ul><p style="margin-top: 12px; padding: 8px 12px; background: #f0fdf4; border-left: 3px solid #10b981; border-radius: 4px; font-size: 13px;"><b>💡 Example:</b> You can create "VIP Premium" (high rate) and "Free Trial" (low rate) groups</p><p style="margin-top: 16px; color: #10b981; font-weight: 600;">👉 Click "Group Management" on the left sidebar</p></div>'
+        description: '<div style="line-height: 1.7;"><p style="margin-bottom: 12px;"><b>What is a Group?</b></p><p style="margin-bottom: 12px;">Groups are the core concept of PineAI.me, like a "service package":</p><ul style="margin-left: 20px; margin-bottom: 12px; font-size: 13px;"><li>🎯 Each group can contain multiple upstream accounts</li><li>💰 Each group has independent billing multiplier</li><li>👥 Can be set as public or exclusive</li></ul><p style="margin-top: 12px; padding: 8px 12px; background: #f0fdf4; border-left: 3px solid #10b981; border-radius: 4px; font-size: 13px;"><b>💡 Example:</b> You can create "VIP Premium" (high rate) and "Free Trial" (low rate) groups</p><p style="margin-top: 16px; color: #10b981; font-weight: 600;">👉 Click "Group Management" on the left sidebar</p></div>'
       },
       createGroup: {
         title: '➕ Create New Group',
@@ -6852,8 +6866,8 @@ export default {
     // User tour steps
     user: {
       welcome: {
-        title: '👋 Welcome to Sub2API',
-        description: '<div style="line-height: 1.8;"><p style="margin-bottom: 16px;">Hello! Welcome to the Sub2API AI service platform.</p><p style="margin-bottom: 12px;"><b>🎯 Quick Start:</b></p><ul style="margin-left: 20px; margin-bottom: 16px;"><li>🔑 Create API Key</li><li>📋 Copy key to your application</li><li>🚀 Start using AI services</li></ul><p style="color: #10b981; font-weight: 600;">Just 1 minute, let\'s get started →</p></div>',
+        title: '👋 Welcome to PineAI.me',
+        description: '<div style="line-height: 1.8;"><p style="margin-bottom: 16px;">Hello! Welcome to the PineAI.me AI service platform.</p><p style="margin-bottom: 12px;"><b>🎯 Quick Start:</b></p><ul style="margin-left: 20px; margin-bottom: 16px;"><li>🔑 Create API Key</li><li>📋 Copy key to your application</li><li>🚀 Start using AI services</li></ul><p style="color: #10b981; font-weight: 600;">Just 1 minute, let\'s get started →</p></div>',
         nextBtn: 'Start 🚀',
         prevBtn: 'Skip'
       },
@@ -7196,6 +7210,207 @@ export default {
         expired: 'Expired',
         revoked: 'Revoked',
       },
+    },
+  },
+
+  // Docs Page
+  docs: {
+    title: 'Access Docs',
+    quickStart: 'Quick Start',
+    copy: 'Copy',
+    copied: 'Copied',
+    nav: {
+      nodejs: 'Node.js Installation',
+      codex: 'Codex Setup',
+      claudeCode: 'Claude Code Setup',
+      geminiCli: 'Gemini CLI Setup',
+    },
+    nodejs: {
+      title: 'Node.js Installation Guide',
+      description: 'Install Node.js LTS on Windows, macOS, and Linux, then verify that node and npm commands work.',
+      tip: 'Tip: Claude Code, Gemini CLI, and Codex all depend on Node.js. Complete this guide first before configuring each tool.',
+      windows: 'Windows',
+      windowsMethod1: 'Method 1: Official download (recommended) — download the LTS installer from the Node.js website.',
+      windowsMethod2: 'Method 2: Using Chocolatey',
+      windowsMethod3: 'Method 3: Using Scoop',
+      macos: 'macOS',
+      macosMethod1: 'Method 1: Official download (recommended) — download the macOS installer from the Node.js website.',
+      macosMethod2: 'Method 2: Using Homebrew',
+      linux: 'Linux',
+      linuxMethod1: 'Recommended: install the LTS version via nvm for easier version management:',
+      verify: 'Verify Installation',
+      verifyDescription: 'After installation, run the following commands in your terminal to confirm node and npm are available:',
+    },
+    codex: {
+      title: 'Codex Setup Guide',
+      description: 'Write your API key into the Codex CLI config directory to access OpenAI Codex models through this gateway.',
+      note: 'Make sure the config directory exists. On macOS/Linux run mkdir -p ~/.codex; on Windows press Win+R and enter %userprofile%\\.codex.',
+      configTitle: 'Configuration Files',
+      configDescription: 'Create config.toml and auth.json under ~/.codex. Replace YOUR_API_KEY with the API key from your console.',
+      verifyTitle: 'Verify Configuration',
+      verifyDescription: 'After configuration, run the codex command in your terminal to test the connection.',
+    },
+    claudeCode: {
+      title: 'Claude Code Setup Guide',
+      description: 'Point Claude Code to this API gateway via environment variables or VSCode settings.',
+      envTitle: 'Environment Variables',
+      envDescription: 'Add the following variables to your shell profile (~/.bashrc, ~/.zshrc) or run them directly in the terminal. Replace YOUR_API_KEY with your API key.',
+      vscodeTitle: 'VSCode Configuration',
+      vscodeDescription: 'If you use Claude Code in VSCode, add the following to ~/.claude/settings.json:',
+    },
+    geminiCli: {
+      title: 'Gemini CLI Setup Guide',
+      description: 'Configure Gemini CLI via environment variables to route requests through this Gemini-compatible endpoint.',
+      envTitle: 'Environment Variables',
+      envDescription: 'Add the following variables to your shell profile or run them directly in the terminal. Replace YOUR_API_KEY with your API key.',
+      note: 'If you have Gemini 3 access, you can set GEMINI_MODEL to gemini-3-pro-preview.',
+    },
+  },
+
+  // Model Pricing Page
+  modelPricing: {
+    title: 'Model Pricing',
+    description: 'Displays official prices and group prices in RMB by default, making it easy to compare costs directly.',
+    pricingRules: 'Pricing Rules',
+    pricingRulesText: 'Official price is converted at $1=¥7. Group price = Official price × Group multiplier + 7',
+    example: 'Example',
+    inputPrice: 'Input Price',
+    official: 'Official',
+    groupPrice: 'Group Price',
+    priceList: 'Price List',
+    officialPrice: 'Official Price',
+    priceListNote: 'Official prices are converted to RMB at a fixed exchange rate of $1=¥7, only for comparison with group prices.',
+    modelId: 'Model ID',
+    outputPrice: 'Output Price',
+    cacheCreation: 'Cache Creation',
+    cacheRead: 'Cache Read',
+    modelDescription: 'Description',
+    groupIntroduction: 'Group Introduction',
+    discount: 'Discount',
+    multiplier: 'Multiplier',
+  },
+
+  // Index Page
+  index: {
+    hero: {
+      badge: 'The Universal AI Gateway',
+      title: 'Connect to the World\'s Top',
+      titleHighlight: 'AI Models',
+      description: 'Built for global developers and teams — dedicated high-speed connections, no ban risk, balance never expires. Supports Alipay/WeChat Pay, low-latency calls to Claude, ChatGPT, Gemini and other mainstream models.',
+      enterConsole: 'Enter Console',
+      viewPricing: 'View Pricing',
+    },
+    tools: {
+      subtitle: 'Compatible Ecosystem',
+      title: 'Supported Devices & AI Coding Tools',
+      openclaw: {
+        name: 'OpenClaw',
+        desc: 'Open-source local AI assistant running on your own computer, executing tasks directly through chat, not just conversation but action.',
+        tag: 'Open Source · Local',
+      },
+      claudeCode: {
+        name: 'Claude Code',
+        desc: 'Anthropic official CLI with native Extended Thinking deep support, writing code as naturally as conversation.',
+        tag: 'ANTHROPIC OFFICIAL',
+      },
+      codex: {
+        name: 'Codex',
+        desc: 'OpenAI official coding agent, excelling at large-scale refactoring, bug fixing and test generation, stable for long tasks.',
+        tag: 'OPENAI OFFICIAL',
+      },
+      geminiCli: {
+        name: 'Gemini CLI',
+        desc: 'Google official open-source terminal AI agent, calling Gemini in command line for coding, debugging and workflow automation.',
+        tag: 'GOOGLE OFFICIAL',
+      },
+    },
+    pricing: {
+      subtitle: 'Pricing Plans',
+      title: 'Pay as you go, use as you need',
+      description: '1 RMB = 1 USD, use official native models, enjoy lower discounts',
+      paygo: {
+        name: 'PAYGO',
+        title: 'Pay as you go',
+        subtitle: 'Never expires',
+        feature1: 'Top up amount, get equivalent RMB credit',
+        feature2: 'Pay for actual usage',
+        feature3: 'Never expires',
+        cta: 'Top Up Now',
+      },
+      claude: {
+        title: 'Claude Pay as you go',
+        ratio: '1:1',
+        ratioLabel: '(RMB:USD)',
+        description: 'No subscription required, flexible billing based on actual usage.',
+        feature1: '1 RMB = 1 USD, synchronized with official prices',
+        feature2: 'Support all Claude series models',
+        feature3: 'Optimized for Claude Code',
+        cta: 'Get Started',
+        recommended: 'Recommended',
+      },
+      chatgpt: {
+        title: 'ChatGPT Pay as you go',
+        ratio: '1:1',
+        ratioLabel: '(RMB:USD)',
+        description: 'No subscription required, flexible billing based on actual usage.',
+        feature1: '1 RMB = 1 USD, synchronized with official prices',
+        feature2: 'Support all OpenAI GPT series models',
+        feature3: 'Optimized for CodeX',
+        cta: 'Get Started',
+        recommended: 'Recommended',
+      },
+    },
+    features: {
+      title: 'Unleash your coding potential, let top AI write code for you',
+      subtitle: 'Stable, fast, and secure AI API infrastructure',
+      globalCoverage: {
+        title: 'Global Coverage',
+        desc: 'Global multi-node deployment, nearby access, low latency, no VPN needed, stable usage in any region',
+      },
+      highAvailability: {
+        title: 'High Availability',
+        desc: 'Multi-account pool intelligent load balancing, automatic failover, 99.9% availability guarantee, 7×24 uninterrupted service',
+      },
+      easyIntegration: {
+        title: 'Easy Integration',
+        desc: 'Compatible with OpenAI API format, just change Base URL to connect, supports all mainstream SDKs and frameworks',
+      },
+      completeAudit: {
+        title: 'Complete Audit',
+        desc: 'Detailed usage statistics and call logs, precise billing by model and token, transparent and traceable bills',
+      },
+    },
+    faq: {
+      title: 'Frequently Asked Questions',
+      q1: {
+        q: 'What is Claude Mirror API? How does it differ from the official API?',
+        a: 'We provide a proxy service that is fully compatible with the official API format. You only need to change the Base URL to our address to seamlessly use all official models without worrying about regional restrictions and ban risks.',
+      },
+      q2: {
+        q: 'Which AI models are supported?',
+        a: 'We support Claude (Sonnet, Opus, Haiku), GPT-4o, GPT-o1, Gemini Pro and other mainstream large models, and continue to integrate the latest released models.',
+      },
+      q3: {
+        q: 'How do you ensure service stability?',
+        a: 'We adopt multi-account pool load balancing and automatic failover mechanisms, with global multi-node deployment to ensure low-latency access. Service availability remains above 99.9%.',
+      },
+      q4: {
+        q: 'Does the balance expire?',
+        a: 'No. Your topped-up balance is permanently valid with no usage period restrictions, available for use at any time as needed.',
+      },
+      q5: {
+        q: 'How to get started?',
+        a: 'Register account → Get API Key → Set Base URL to our address → Start using. The whole process takes only a few minutes.',
+      },
+    },
+    cta: {
+      title: 'Ready to upgrade your AI application?',
+      description: 'Register now, get your exclusive API Key, start accessing the world\'s top AI large model services, and make AI part of your development workflow',
+      enterConsole: 'Enter Console',
+      freeRegister: 'Free Register',
+    },
+    footer: {
+      allRightsReserved: 'All rights reserved.',
     },
   },
 
