@@ -187,6 +187,16 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/contact',
+    name: 'Contact',
+    component: () => import('@/views/ContactView.vue'),
+    meta: {
+      requiresAuth: false,
+      title: 'Contact Us',
+      titleKey: 'contact.title'
+    }
+  },
+  {
     path: '/legal/:documentId',
     name: 'LegalDocument',
     component: () => import('@/views/public/LegalDocumentView.vue'),

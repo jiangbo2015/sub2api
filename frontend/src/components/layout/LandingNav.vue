@@ -14,7 +14,7 @@
         <router-link to="/model-pricing" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400">{{ t('landing.nav.modelPricing') }}</router-link>
         <router-link to="/docs" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400">{{ t('landing.nav.docs') }}</router-link>
         <a href="/home#faq" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400" @click.prevent="navigateToFaq">{{ t('landing.nav.faq') }}</a>
-        <a v-if="contactUrl" :href="contactUrl" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400">{{ t('landing.nav.contact') }}</a>
+        <router-link to="/contact" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400">{{ t('landing.nav.contact') }}</router-link>
       </div>
 
       <!-- Right Actions -->
@@ -58,7 +58,7 @@
         <router-link to="/model-pricing" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click="mobileMenuOpen = false">{{ t('landing.nav.modelPricing') }}</router-link>
         <router-link to="/docs" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click="mobileMenuOpen = false">{{ t('landing.nav.docs') }}</router-link>
         <a href="/home#faq" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click.prevent="navigateToFaq">{{ t('landing.nav.faq') }}</a>
-        <a v-if="contactUrl" :href="contactUrl" target="_blank" rel="noopener noreferrer" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click="mobileMenuOpen = false">{{ t('landing.nav.contact') }}</a>
+        <router-link to="/contact" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click="mobileMenuOpen = false">{{ t('landing.nav.contact') }}</router-link>
         <router-link
           :to="isAuthenticated ? dashboardPath : '/login'"
           class="mt-2 block rounded-xl bg-primary-700 px-3 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-primary-800"
@@ -87,7 +87,6 @@ const appStore = useAppStore()
 
 const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'PineAI.me')
 const siteLogo = computed(() => appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '')
-const contactUrl = computed(() => appStore.cachedPublicSettings?.contact_info || '')
 
 const isAuthenticated = computed(() => authStore.isAuthenticated)
 const isAdmin = computed(() => authStore.isAdmin)
