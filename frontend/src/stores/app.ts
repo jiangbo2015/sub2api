@@ -12,7 +12,7 @@ import {
   type VersionInfo,
   type ReleaseInfo
 } from '@/api/admin/system'
-// import { getPublicSettings as fetchPublicSettingsAPI } from '@/api/auth'
+import { getPublicSettings as fetchPublicSettingsAPI } from '@/api/auth'
 
 export const useAppStore = defineStore('app', () => {
   // ==================== State ====================
@@ -371,8 +371,7 @@ export const useAppStore = defineStore('app', () => {
 
     publicSettingsLoading.value = true
     try {
-      // const data = await fetchPublicSettingsAPI()
-      const data = {} as PublicSettings
+      const data = await fetchPublicSettingsAPI()
       applySettings(data)
       return data
     } catch (error) {
