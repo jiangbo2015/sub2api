@@ -302,7 +302,7 @@ const modelPricingData: Record<'claude-code' | 'codex', ModelPricing[]> = {
         output: 210.0,
         cacheRead: 3.5
       },
-      description: 'Codex GPT-4'
+      description: 'Codex GPT-5.5'
     },
     {
       id: 'gpt-5.4',
@@ -312,7 +312,7 @@ const modelPricingData: Record<'claude-code' | 'codex', ModelPricing[]> = {
         output: 105.0,
         cacheRead: 1.75
       },
-      description: 'Codex GPT-4'
+      description: 'Codex GPT-5.4'
     },
     {
       id: 'gpt-5.4-mini',
@@ -322,7 +322,7 @@ const modelPricingData: Record<'claude-code' | 'codex', ModelPricing[]> = {
         output: 31.5,
         cacheRead: 0.53
       },
-      description: 'Codex GPT-4'
+      description: 'Codex GPT-5.4 Mini'
     }
   ]
 }
