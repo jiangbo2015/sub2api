@@ -61,6 +61,6 @@ import LandingNav from '@/components/layout/LandingNav.vue'
 
 const { t } = useI18n()
 const contactEmail = 'support@pateway.ai'
-const qrCodeDataUrl = '/public/qq.jpg'
+const qrCodeDataUrl = '/qq.jpg'
 
 </script>
