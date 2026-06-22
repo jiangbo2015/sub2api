@@ -1,5 +1,5 @@
 /**
- * API Client for PineAI.me Backend
+ * API Client for pineai.net Backend
  * Central export point for all API modules
  */
 

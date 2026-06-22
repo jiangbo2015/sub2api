@@ -13,7 +13,7 @@ function paramsFromDeeplink(deeplink: string): URLSearchParams {
 describe('ccswitchImport utils', () => {
   const baseInput = {
     baseUrl: 'https://api.example.com',
-    providerName: 'PineAI.me',
+    providerName: 'pineai.net',
     apiKey: 'sk-test',
     usageScript: 'return true'
   }

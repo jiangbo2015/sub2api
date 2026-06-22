@@ -26,7 +26,7 @@
                 v-if="qrCodeDataUrl"
                 :src="qrCodeDataUrl"
                 alt="WeChat QR Code"
-                class="h-72 w-full max-w-[18rem] rounded-[1.5rem] object-cover"
+                class="w-full max-w-[18rem] rounded-[1.5rem] object-cover"
               />
               <div v-else class="flex h-72 w-72 items-center justify-center rounded-[1.5rem] bg-gray-100 text-sm text-gray-500 dark:bg-dark-950 dark:text-dark-500">
                 {{ t('contact.qrLoading') }}
@@ -54,24 +54,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 // import QRCode from 'qrcode'
 import LandingFooter from '@/components/layout/LandingFooter.vue'
 import LandingNav from '@/components/layout/LandingNav.vue'
 
 const { t } = useI18n()
-const contactEmail = 'andy@bojiangsoftware.com'
-const qrCodeDataUrl = '/public/weixin.png'
+const contactEmail = 'support@pateway.ai'
+const qrCodeDataUrl = '/public/qq.jpg'
 
-onMounted(async () => {
-  try {
-    // qrCodeDataUrl.value = await QRCode.toDataURL('WeChat ID: sub2api_support', {
-    //   width: 360,
-    //   margin: 2,
-    // })
-  } catch (error) {
-    console.error('Failed to generate QR code:', error)
-  }
-})
 </script>

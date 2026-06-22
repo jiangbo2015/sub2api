@@ -1,6 +1,6 @@
 # Layout Components
 
-Vue 3 layout components for the PineAI.me frontend, built with Composition API, TypeScript, and TailwindCSS.
+Vue 3 layout components for the sub2api frontend, built with Composition API, TypeScript, and TailwindCSS.
 
 ## Components
 

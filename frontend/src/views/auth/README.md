@@ -1,6 +1,6 @@
 # Authentication Views
 
-This directory contains Vue 3 authentication views for the PineAI.me frontend application.
+This directory contains Vue 3 authentication views for the pineai.net frontend application.
 
 ## Components
 

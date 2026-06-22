@@ -11,10 +11,10 @@
 
       <!-- Desktop Nav Links -->
       <div class="hidden items-center gap-8 md:flex">
-        <router-link to="/model-pricing" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400">{{ t('landing.nav.modelPricing') }}</router-link>
-        <router-link to="/docs" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400">{{ t('landing.nav.docs') }}</router-link>
+        <router-link to="/model-pricing" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400" active-class="text-primary-700 font-semibold dark:text-primary-300" exact-active-class="text-primary-700 font-semibold dark:text-primary-300">{{ t('landing.nav.modelPricing') }}</router-link>
+        <router-link to="/docs" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400" active-class="text-primary-700 font-semibold dark:text-primary-300" exact-active-class="text-primary-700 font-semibold dark:text-primary-300">{{ t('landing.nav.docs') }}</router-link>
         <a href="/home#faq" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400" @click.prevent="navigateToFaq">{{ t('landing.nav.faq') }}</a>
-        <router-link to="/contact" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400">{{ t('landing.nav.contact') }}</router-link>
+        <router-link to="/contact" class="text-sm font-medium text-gray-600 transition-colors hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-400" active-class="text-primary-700 font-semibold dark:text-primary-300" exact-active-class="text-primary-700 font-semibold dark:text-primary-300">{{ t('landing.nav.contact') }}</router-link>
       </div>
 
       <!-- Right Actions -->
@@ -55,10 +55,10 @@
     <!-- Mobile Menu -->
     <div v-show="mobileMenuOpen" class="border-t border-primary-100/40  px-6 pb-4 pt-2 dark:border-dark-700/50 bg-primary-100 dark:bg-dark-900 md:hidden">
       <div class="flex flex-col gap-1">
-        <router-link to="/model-pricing" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click="mobileMenuOpen = false">{{ t('landing.nav.modelPricing') }}</router-link>
-        <router-link to="/docs" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click="mobileMenuOpen = false">{{ t('landing.nav.docs') }}</router-link>
+        <router-link to="/model-pricing" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" active-class="bg-primary-50 text-primary-700 font-semibold dark:bg-dark-800 dark:text-primary-300" exact-active-class="bg-primary-50 text-primary-700 font-semibold dark:bg-dark-800 dark:text-primary-300" @click="mobileMenuOpen = false">{{ t('landing.nav.modelPricing') }}</router-link>
+        <router-link to="/docs" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" active-class="bg-primary-50 text-primary-700 font-semibold dark:bg-dark-800 dark:text-primary-300" exact-active-class="bg-primary-50 text-primary-700 font-semibold dark:bg-dark-800 dark:text-primary-300" @click="mobileMenuOpen = false">{{ t('landing.nav.docs') }}</router-link>
         <a href="/home#faq" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click.prevent="navigateToFaq">{{ t('landing.nav.faq') }}</a>
-        <router-link to="/contact" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" @click="mobileMenuOpen = false">{{ t('landing.nav.contact') }}</router-link>
+        <router-link to="/contact" class="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-300 dark:hover:bg-dark-800" active-class="bg-primary-50 text-primary-700 font-semibold dark:bg-dark-800 dark:text-primary-300" exact-active-class="bg-primary-50 text-primary-700 font-semibold dark:bg-dark-800 dark:text-primary-300" @click="mobileMenuOpen = false">{{ t('landing.nav.contact') }}</router-link>
         <router-link
           :to="isAuthenticated ? dashboardPath : '/login'"
           class="mt-2 block rounded-xl bg-primary-700 px-3 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-primary-800"
@@ -85,7 +85,7 @@ const { t } = useI18n()
 const authStore = useAuthStore()
 const appStore = useAppStore()
 
-const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'PineAI.me')
+const siteName = computed(() => 'PineAI.net')
 const siteLogo = computed(() => appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '')
 
 const isAuthenticated = computed(() => authStore.isAuthenticated)
