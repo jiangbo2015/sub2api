@@ -1,6 +1,6 @@
 # Authentication Views Usage Examples
 
-This document provides practical examples of how to use the authentication views in the PineAI.me frontend.
+This document provides practical examples of how to use the authentication views in the pineai.netfrontend.
 
 ## Quick Start
 
@@ -61,7 +61,7 @@ This document provides practical examples of how to use the authentication views
 // - On success:
 //   - Token stored in localStorage
 //   - User data stored in state
-//   - Success toast: "Account created successfully! Welcome to PineAI.me."
+//   - Success toast: "Account created successfully! Welcome to pineai.net."
 //   - Redirect to /dashboard
 // - On error:
 //   - Error message displayed inline

@@ -11,8 +11,8 @@ describe('resolveDocumentTitle', () => {
   })
 
   it('站点名为空时，回退默认站点名', () => {
-    expect(resolveDocumentTitle('Dashboard', '')).toBe('Dashboard - PineAI.me')
-    expect(resolveDocumentTitle(undefined, '   ')).toBe('PineAI.me')
+    expect(resolveDocumentTitle('Dashboard', '')).toBe('Dashboard - pineai.net')
+    expect(resolveDocumentTitle(undefined, '   ')).toBe('pineai.net')
   })
 
   it('站点名变更时仅影响后续路由标题计算', () => {

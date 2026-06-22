@@ -1,5 +1,5 @@
 /**
- * Core Type Definitions for PineAI.me Frontend
+ * Core Type Definitions for pineai.net Frontend
  */
 
 // ==================== Common Types ====================

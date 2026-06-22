@@ -1724,7 +1724,7 @@ const executeCcsImport = (row: ApiKey, clientType: CcSwitchClientType) => {
       };
     }
   })`
-  const providerName = (publicSettings.value?.site_name || 'PineAI.me').trim() || 'PineAI.me'
+  const providerName = (publicSettings.value?.site_name || 'pineai.net').trim() || 'pineai.net'
   const deeplink = buildCcSwitchImportDeeplink({
     baseUrl,
     platform,

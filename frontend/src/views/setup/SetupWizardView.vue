@@ -131,7 +131,7 @@
                 v-model="formData.database.dbname"
                 type="text"
                 class="input"
-                placeholder="PineAI.me"
+                placeholder="pineai.net"
               />
             </div>
             <div>
@@ -535,7 +535,7 @@ const formData = reactive<InstallRequest>({
     port: 5432,
     user: 'postgres',
     password: '',
-    dbname: 'PineAI.me',
+    dbname: 'pineai.net',
     sslmode: 'disable'
   },
   redis: {

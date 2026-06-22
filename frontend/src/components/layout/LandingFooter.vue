@@ -5,7 +5,7 @@
         <div class="h-8 w-full max-w-[2rem] overflow-hidden rounded-md sm:h-10 sm:max-w-[2.5rem]">
           <img :src="siteLogo || '/logo.svg'" alt="Logo" class="h-full w-full object-contain" />
         </div>
-        <!-- <span class="text-sm font-semibold text-primary-800 dark:text-primary-200">{{ siteName }}</span> -->
+        <span class="text-sm font-semibold text-primary-800 dark:text-primary-200">{{ siteName }}</span>
       </router-link>
       <p class="text-xs text-gray-400 dark:text-dark-500">
         &copy; {{ currentYear }} {{ siteName }}. {{ t('index.footer.allRightsReserved') }}
@@ -22,7 +22,7 @@ import { useAppStore } from '@/stores'
 const { t } = useI18n()
 const appStore = useAppStore()
 
-const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'PineA.me')
+const siteName = computed(() => 'PineAI.net')
 const siteLogo = computed(() => appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '')
 const currentYear = computed(() => new Date().getFullYear())
 </script>

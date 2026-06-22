@@ -1,6 +1,6 @@
 # Pinia Stores Documentation
 
-This directory contains all Pinia stores for the PineAI.me frontend application.
+This directory contains all Pinia stores for the pineai.net frontend application.
 
 ## Stores Overview
 

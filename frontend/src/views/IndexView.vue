@@ -294,7 +294,7 @@ const { t } = useI18n()
 const authStore = useAuthStore()
 const appStore = useAppStore()
 
-const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'PineAI.me')
+const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'pineai.net')
 const siteLogo = computed(() => appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '')
 
 const isAuthenticated = computed(() => authStore.isAuthenticated)
