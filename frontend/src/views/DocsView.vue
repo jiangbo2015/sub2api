@@ -56,10 +56,10 @@
             <div class="mt-10">
               <h2 class="border-b border-gray-200 pb-3 text-lg font-semibold text-gray-900 dark:border-dark-700 dark:text-white">{{ t('docs.nodejs.windows') }}</h2>
               <div class="mt-5 space-y-4">
-                <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-300">{{ t('docs.nodejs.windowsMethod1') }}</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-dark-200">{{ t('docs.nodejs.windowsMethod2') }}</p>
+                <p class="docs-rich-text text-sm leading-relaxed text-gray-600 dark:text-dark-300" v-html="t('docs.nodejs.windowsMethod1')"></p>
+                <p class="docs-rich-text text-sm font-medium text-gray-800 dark:text-dark-200" v-html="t('docs.nodejs.windowsMethod2')"></p>
                 <DocsCodeBlock shell="CMD / PowerShell" :code="windowsChocoCode" />
-                <p class="text-sm font-medium text-gray-800 dark:text-dark-200">{{ t('docs.nodejs.windowsMethod3') }}</p>
+                <p class="docs-rich-text text-sm font-medium text-gray-800 dark:text-dark-200" v-html="t('docs.nodejs.windowsMethod3')"></p>
                 <DocsCodeBlock shell="CMD / PowerShell" :code="windowsScoopCode" />
               </div>
             </div>
@@ -67,8 +67,8 @@
             <div class="mt-10">
               <h2 class="border-b border-gray-200 pb-3 text-lg font-semibold text-gray-900 dark:border-dark-700 dark:text-white">{{ t('docs.nodejs.macos') }}</h2>
               <div class="mt-5 space-y-4">
-                <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-300">{{ t('docs.nodejs.macosMethod1') }}</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-dark-200">{{ t('docs.nodejs.macosMethod2') }}</p>
+                <p class="docs-rich-text text-sm leading-relaxed text-gray-600 dark:text-dark-300" v-html="t('docs.nodejs.macosMethod1')"></p>
+                <p class="docs-rich-text text-sm font-medium text-gray-800 dark:text-dark-200" v-html="t('docs.nodejs.macosMethod2')"></p>
                 <DocsCodeBlock shell="Terminal" :code="macosBrewCode" />
               </div>
             </div>
@@ -76,7 +76,7 @@
             <div class="mt-10">
               <h2 class="border-b border-gray-200 pb-3 text-lg font-semibold text-gray-900 dark:border-dark-700 dark:text-white">{{ t('docs.nodejs.linux') }}</h2>
               <div class="mt-5 space-y-4">
-                <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-300">{{ t('docs.nodejs.linuxMethod1') }}</p>
+                <p class="docs-rich-text text-sm leading-relaxed text-gray-600 dark:text-dark-300" v-html="t('docs.nodejs.linuxMethod1')"></p>
                 <DocsCodeBlock shell="Terminal" :code="linuxNvmCode" />
               </div>
             </div>
@@ -106,7 +106,7 @@
             <div class="mt-10">
               <h2 class="border-b border-gray-200 pb-3 text-lg font-semibold text-gray-900 dark:border-dark-700 dark:text-white">{{ t('docs.codex.configTitle') }}</h2>
               <div class="mt-5 space-y-4">
-                <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-300">{{ t('docs.codex.configDescription') }}</p>
+                <p class="docs-rich-text text-sm leading-relaxed text-gray-600 dark:text-dark-300" v-html="t('docs.codex.configDescription')"></p>
                 <DocsCodeBlock :path="codexConfigPath" :code="codexConfigCode" />
                 <DocsCodeBlock :path="codexAuthPath" :code="codexAuthCode" />
               </div>
@@ -132,7 +132,7 @@
             <div class="mt-10">
               <h2 class="border-b border-gray-200 pb-3 text-lg font-semibold text-gray-900 dark:border-dark-700 dark:text-white">{{ t('docs.claudeCode.envTitle') }}</h2>
               <div class="mt-5 space-y-4">
-                <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-300">{{ t('docs.claudeCode.envDescription') }}</p>
+                <p class="docs-rich-text text-sm leading-relaxed text-gray-600 dark:text-dark-300" v-html="t('docs.claudeCode.envDescription')"></p>
                 <DocsCodeBlock shell="macOS / Linux" :code="claudeUnixCode" />
                 <DocsCodeBlock shell="Windows CMD" :code="claudeCmdCode" />
                 <DocsCodeBlock shell="PowerShell" :code="claudePowershellCode" />
@@ -148,29 +148,6 @@
             </div>
           </section>
 
-          <section :id="SECTION_IDS.geminiCli" class="scroll-mt-24">
-            <h1 class="font-serif text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">
-              {{ t('docs.geminiCli.title') }}
-            </h1>
-            <p class="mt-4 text-base leading-relaxed text-gray-600 dark:text-dark-300">
-              {{ t('docs.geminiCli.description') }}
-            </p>
-
-            <div class="mt-10">
-              <h2 class="border-b border-gray-200 pb-3 text-lg font-semibold text-gray-900 dark:border-dark-700 dark:text-white">{{ t('docs.geminiCli.envTitle') }}</h2>
-              <div class="mt-5 space-y-4">
-                <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-300">{{ t('docs.geminiCli.envDescription') }}</p>
-                <DocsCodeBlock shell="macOS / Linux" :code="geminiUnixCode" />
-                <DocsCodeBlock shell="Windows CMD" :code="geminiCmdCode" />
-                <DocsCodeBlock shell="PowerShell" :code="geminiPowershellCode" />
-              </div>
-            </div>
-
-            <div class="mt-6 flex items-start gap-3 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 dark:border-blue-800/40 dark:bg-blue-900/20">
-              <Icon name="infoCircle" size="md" class="mt-0.5 text-blue-600 dark:text-blue-400" />
-              <p class="text-sm leading-relaxed text-blue-800 dark:text-blue-200">{{ t('docs.geminiCli.note') }}</p>
-            </div>
-          </section>
         </main>
       </div>
     </div>
@@ -192,7 +169,6 @@ const SECTION_IDS = {
   nodejs: 'Nodejs',
   codex: 'Codex',
   claudeCode: 'ClaudeCode',
-  geminiCli: 'GeminiCLI',
 } as const
 
 type SectionId = typeof SECTION_IDS[keyof typeof SECTION_IDS]
@@ -203,13 +179,11 @@ const router = useRouter()
 
 const API_KEY_PLACEHOLDER = 'YOUR_API_KEY'
 const baseUrl = computed(() => window.location.origin.replace(/\/+$/, ''))
-const geminiBaseUrl = computed(() => `${baseUrl.value}/v1beta`)
 
 const navItems = computed(() => [
   { id: SECTION_IDS.nodejs, label: t('docs.nav.nodejs') },
   { id: SECTION_IDS.codex, label: t('docs.nav.codex') },
   { id: SECTION_IDS.claudeCode, label: t('docs.nav.claudeCode') },
-  { id: SECTION_IDS.geminiCli, label: t('docs.nav.geminiCli') },
 ])
 
 const activeSection = ref<SectionId>(SECTION_IDS.nodejs)
@@ -263,16 +237,6 @@ const claudeVscodeCode = computed(() => `{
   }
 }`)
 
-const geminiModel = 'gemini-2.0-flash'
-const geminiUnixCode = computed(() => `export GOOGLE_GEMINI_BASE_URL="${geminiBaseUrl.value}"
-export GEMINI_API_KEY="${API_KEY_PLACEHOLDER}"
-export GEMINI_MODEL="${geminiModel}"`)
-const geminiCmdCode = computed(() => `set GOOGLE_GEMINI_BASE_URL=${geminiBaseUrl.value}
-set GEMINI_API_KEY=${API_KEY_PLACEHOLDER}
-set GEMINI_MODEL=${geminiModel}`)
-const geminiPowershellCode = computed(() => `$env:GOOGLE_GEMINI_BASE_URL="${geminiBaseUrl.value}"
-$env:GEMINI_API_KEY="${API_KEY_PLACEHOLDER}"
-$env:GEMINI_MODEL="${geminiModel}"`)
 
 function isValidSectionId(value: string): value is SectionId {
   return Object.values(SECTION_IDS).includes(value as SectionId)
@@ -337,3 +301,20 @@ onUnmounted(() => {
   observer?.disconnect()
 })
 </script>
+
+<style scoped>
+.docs-rich-text :deep(a) {
+  color: #0c11ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.docs-rich-text :deep(a:hover) {
+  color: #0609cd;
+}
+:is(.dark) .docs-rich-text :deep(a) {
+  color: #5672ff;
+}
+:is(.dark) .docs-rich-text :deep(a:hover) {
+  color: #85a3ff;
+}
+</style>

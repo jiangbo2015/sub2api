@@ -178,6 +178,7 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/docs',
+    alias: ['/doc'],
     name: 'Docs',
     component: () => import('@/views/DocsView.vue'),
     meta: {
