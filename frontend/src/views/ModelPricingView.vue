@@ -1,165 +1,148 @@
 <template>
-  <div class="min-h-screen bg-primary-100 dark:bg-dark-900">
+  <div class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <LandingNav />
 
-    <div class="mx-auto max-w-6xl px-6 py-8">
-      <!-- Header -->
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">{{ t('modelPricing.title') }}</h1>
-        <p class="mt-2 text-gray-600 dark:text-dark-300">{{ t('modelPricing.description') }}</p>
-      </div>
-
-      <!-- Model Selection Tabs -->
-      <div class="mb-6 flex gap-2 border-b border-gray-200 dark:border-dark-700">
-        <button
-          v-for="model in modelTabs"
-          :key="model.id"
-          @click="selectedModel = model.id"
-          :class="[
-            'px-4 py-2 text-sm font-medium transition-colors',
-            selectedModel === model.id
-              ? 'border-b-2 border-primary-500 text-primary-600 dark:text-primary-400'
-              : 'text-gray-600 hover:text-gray-900 dark:text-dark-400 dark:hover:text-white'
-          ]"
-        >
-          {{ model.name }}
-        </button>
-      </div>
-
-      <!-- Pricing Rules -->
-      <div class="mb-6 rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
-        <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">{{ t('modelPricing.pricingRules') }}</h3>
-        <p class="text-sm text-gray-700 dark:text-dark-300">{{ t('modelPricing.pricingRulesText') }}</p>
-        <p class="mt-1 text-sm text-gray-600 dark:text-dark-400">
-          {{ t('modelPricing.example') }}: claude-opus-4-8 {{ t('modelPricing.inputPrice') }}, {{ t('modelPricing.official') }} ¥35.00, {{ t('modelPricing.groupPrice') }} ¥28.00
-        </p>
-      </div>
-
-      <!-- Price List Section -->
-      <div class="rounded-lg bg-white p-6 shadow-sm dark:bg-dark-800">
-        <div class="mb-4 flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ t('modelPricing.priceList') }}</h3>
-          <!-- Toggle Buttons -->
-          <div class="flex rounded-lg border border-gray-200 dark:border-dark-700">
-            <button
-              @click="priceView = 'group'"
-              :class="[
-                'px-4 py-2 text-sm font-medium transition-colors',
-                priceView === 'group'
-                  ? 'bg-primary-500 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700'
-              ]"
-            >
-              {{ t('modelPricing.groupPrice') }}
-            </button>
-            <button
-              @click="priceView = 'official'"
-              :class="[
-                'px-4 py-2 text-sm font-medium transition-colors',
-                priceView === 'official'
-                  ? 'bg-primary-500 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700'
-              ]"
-            >
-              {{ t('modelPricing.officialPrice') }}
-            </button>
+    <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div class="mb-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="mb-2 text-sm font-medium uppercase tracking-[0.18em] text-primary-600 dark:text-primary-400">
+              Model pricing
+            </p>
+            <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">模型价格</h1>
+          </div>
+          <div class="rounded-full bg-blue-50 px-4 py-2 text-sm text-blue-700 dark:bg-blue-500/10 dark:text-blue-300">
+            价格参考官方定价，实际可按需开放其他模型
           </div>
         </div>
+      </div>
 
-        <p class="mb-4 text-sm text-gray-600 dark:text-dark-400">
-          {{ t('modelPricing.priceListNote') }}
-        </p>
+      <section class="mb-8 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-xl font-semibold">当前支持的模型</h2>
+            <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+              {{ modelGroups.length }} 个系列
+            </span>
+          </div>
 
-        <!-- Group Tabs -->
-        <div v-if="priceView === 'group'" class="mb-6">
-          <div class="mb-4 flex gap-2 border-b border-gray-200 dark:border-dark-700">
+          <div class="flex gap-2">
             <button
-              v-for="group in activeGroupInfo"
+              v-for="group in modelGroups"
               :key="group.id"
-              @click="selectedGroup = group.id"
+              type="button"
+              @click="activeCategory = group.id"
               :class="[
-                'px-4 py-2 text-sm font-medium transition-colors',
-                selectedGroup === group.id
-                  ? 'border-b-2 border-primary-500 text-primary-600 dark:text-primary-400'
-                  : 'text-gray-600 hover:text-gray-900 dark:text-dark-400 dark:hover:text-white'
+                'rounded-full px-4 py-2 text-sm font-medium transition-all',
+                activeCategory === group.id
+                  ? 'bg-primary-600 text-white shadow-sm'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700'
               ]"
             >
               {{ group.name }}
             </button>
           </div>
-          
-          <!-- Selected Group Info -->
-          <div class="rounded-lg bg-gray-50 p-4 dark:bg-dark-700/30">
-            <div class="flex items-center justify-between text-sm">
-              <span class="font-medium text-gray-900 dark:text-white">
-                {{ activeGroupInfo.find(g => g.id === selectedGroup)?.name }}
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <h2 class="mb-4 text-xl font-semibold">官方价格参考</h2>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="https://platform.claude.com/docs/en/about-claude/pricing"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-primary-200 hover:bg-primary-50 hover:text-primary-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-primary-600 dark:hover:text-primary-300"
+            >
+              Claude 官方价格
+            </a>
+            <a
+              href="https://developers.openai.com/api/docs/pricing?latest-pricing=standard"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-primary-200 hover:bg-primary-50 hover:text-primary-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-primary-600 dark:hover:text-primary-300"
+            >
+              GPT 官方价格
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="mb-5 flex items-center justify-between gap-3">
+          <h2 class="text-xl font-semibold">{{ activeGroup.name }} 模型列表</h2>
+          <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
+            参考官方价格</span>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <div
+            v-for="model in activeModels"
+            :key="model.id"
+            class="rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-primary-200 hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/80"
+          >
+            <div class="mb-3 flex items-center justify-between">
+              <span class="font-mono text-sm font-semibold text-slate-900 dark:text-white">{{ model.id }}</span>
+              <span class="rounded-full bg-primary-50 px-2 py-1 text-[10px] font-medium text-primary-700 dark:bg-primary-500/10 dark:text-primary-300">
+                {{ model.label }}
               </span>
-              <span class="text-gray-600 dark:text-dark-400">
-                {{ t('modelPricing.discount') }}: {{ activeGroupInfo.find(g => g.id === selectedGroup)?.discount }} | {{ t('modelPricing.multiplier') }}: {{ activeGroupInfo.find(g => g.id === selectedGroup)?.multiplier }}
-              </span>
+            </div>
+
+            <div class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+              <div class="flex items-center justify-between">
+                <span>输入</span>
+                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.input) }}</strong>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>输出</span>
+                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.output) }}</strong>
+              </div>
+              <div v-if="model.officialPrice.cacheCreation !== null" class="flex items-center justify-between">
+                <span>缓存创建</span>
+                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.cacheCreation) }}</strong>
+              </div>
+              <div v-if="model.officialPrice.cacheRead !== null" class="flex items-center justify-between">
+                <span>缓存读取</span>
+                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.cacheRead) }}</strong>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Pricing Table -->
+      <section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="mb-4 flex items-center justify-between">
+          <h2 class="text-xl font-semibold">价格说明</h2>
+          <span class="text-sm text-slate-500 dark:text-slate-400">单位：¥/1M</span>
+        </div>
+
         <div class="overflow-x-auto">
-          <table class="w-full text-sm">
+          <table class="min-w-full text-left text-sm">
             <thead>
-              <tr class="border-b border-gray-200 dark:border-dark-700">
-                <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-white">{{ t('modelPricing.modelId') }}</th>
-                <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-white">{{ t('modelPricing.inputPrice') }}</th>
-                <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-white">{{ t('modelPricing.outputPrice') }}</th>
-                <th v-if="showCacheCreationColumn" class="px-4 py-3 text-left font-medium text-gray-900 dark:text-white">{{ t('modelPricing.cacheCreation') }}</th>
-                <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-white">{{ t('modelPricing.cacheRead') }}</th>
-                <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-white">{{ t('modelPricing.modelDescription') }}</th>
+              <tr class="border-b border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300">
+                <th class="px-3 py-3 font-medium">模型</th>
+                <th class="px-3 py-3 font-medium">输入</th>
+                <th class="px-3 py-3 font-medium">输出</th>
+                <th class="px-3 py-3 font-medium">缓存创建</th>
+                <th class="px-3 py-3 font-medium">缓存读取</th>
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="model in currentModelData"
-                :key="model.id"
-                class="border-b border-gray-100 dark:border-dark-800 hover:bg-gray-50 dark:hover:bg-dark-700/50"
-              >
-                <td class="px-4 py-3 font-mono text-gray-900 dark:text-white">{{ model.id }}</td>
-                <td class="px-4 py-3 text-gray-700 dark:text-dark-300">
-                  <div class="flex flex-col gap-1">
-                    <span :class="priceView === 'group' ? 'block font-semibold text-gray-900 dark:text-white' : 'block'">{{ priceView === 'group' ? formatPrice(getGroupPrice(model).input) : formatPrice(model.officialPrice.input) }}</span>
-                    <span v-if="priceView === 'group'" class="block text-xs text-gray-500 dark:text-gray-400 line-through">
-                      {{ formatPrice(model.officialPrice.input) }}
-                    </span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-gray-700 dark:text-dark-300">
-                  <div class="flex flex-col gap-1">
-                    <span :class="priceView === 'group' ? 'block font-semibold text-gray-900 dark:text-white' : 'block'">{{ priceView === 'group' ? formatPrice(getGroupPrice(model).output) : formatPrice(model.officialPrice.output) }}</span>
-                    <span v-if="priceView === 'group'" class="block text-xs text-gray-500 dark:text-gray-400 line-through">
-                      {{ formatPrice(model.officialPrice.output) }}
-                    </span>
-                  </div>
-                </td>
-                <td v-if="showCacheCreationColumn" class="px-4 py-3 text-gray-700 dark:text-dark-300">
-                  <div class="flex flex-col gap-1">
-                    <span :class="priceView === 'group' ? 'block font-semibold text-gray-900 dark:text-white' : 'block'">{{ priceView === 'group' ? formatPrice(getGroupPrice(model).cacheCreation ?? 0) : formatPrice(model.officialPrice.cacheCreation ?? 0) }}</span>
-                    <span v-if="priceView === 'group'" class="block text-xs text-gray-500 dark:text-gray-400 line-through">
-                      {{ formatPrice(model.officialPrice.cacheCreation ?? 0) }}
-                    </span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-gray-700 dark:text-dark-300">
-                  <div class="flex flex-col gap-1">
-                    <span :class="priceView === 'group' ? 'block font-semibold text-gray-900 dark:text-white' : 'block'">{{ priceView === 'group' ? formatPrice(getGroupPrice(model).cacheRead) : formatPrice(model.officialPrice.cacheRead) }}</span>
-                    <span v-if="priceView === 'group'" class="block text-xs text-gray-500 dark:text-gray-400 line-through">
-                      {{ formatPrice(model.officialPrice.cacheRead) }}
-                    </span>
-                  </div>
-                </td>
-                <td class="px-4 py-3 text-gray-600 dark:text-dark-400">{{ model.description }}</td>
+              <tr v-for="model in activeModels" :key="model.id" class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-3 py-3 font-mono text-slate-900 dark:text-white">{{ model.id }}</td>
+                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.input) }}</td>
+                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.output) }}</td>
+                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.cacheCreation) }}</td>
+                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.cacheRead) }}</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
+
+        <div class="mt-6 rounded-xl bg-amber-50 p-4 text-sm text-amber-800 dark:bg-amber-500/10 dark:text-amber-200">
+          目前已支持 Claude 与 GPT 两类模型，可根据业务需要继续开放其他模型；
+        </div>
+      </section>
+    </main>
 
     <LandingFooter />
   </div>
@@ -167,183 +150,99 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useAuthStore, useAppStore } from '@/stores'
+import { useAuthStore } from '@/stores'
 import LandingNav from '@/components/layout/LandingNav.vue'
 import LandingFooter from '@/components/layout/LandingFooter.vue'
 
-const { t } = useI18n()
-
 const authStore = useAuthStore()
-const appStore = useAppStore()
 
-// Model selection tabs
-const modelTabs = [
-  { id: 'claude-code', name: 'Claude Code' },
-  { id: 'codex', name: 'Codex' },
-  // { id: 'gemini', name: 'Gemini' }
-]
+const modelGroups = [
+  { id: 'claude', name: 'Claude' },
+  { id: 'gpt', name: 'GPT' }
+] as const
 
-const selectedModel = ref('claude-code')
-const priceView = ref<'group' | 'official'>('group')
-const selectedGroup = ref('lite')
+const activeCategory = ref<(typeof modelGroups)[number]['id']>('claude')
 
-// Group information
-const groupInfo = [
-  { id: 'lite', name: 'Claude lite', discount: '80%', multiplier: '5.6' },
-  // { id: 'plus', name: 'Claude Plus (精品)', discount: '85%', multiplier: '0.15' },
-  // { id: 'max-cc', name: 'Claude Max (仅限CC)', discount: '80%', multiplier: '0.2' },
-  // { id: 'max-external', name: 'Claude Max (外接版)', discount: '75%', multiplier: '0.25' }
-]
-const groupInfoCodex = [
-  { id: 'lite', name: 'Codex lite', discount: '80%', multiplier: '5.6' },
-]
-const groupInfoByModel = {
-  'claude-code': groupInfo,
-  'codex': groupInfoCodex
-}
+const claudeModels = [
+  {
+    id: 'claude-opus-5',
+    label: 'Opus',
+    officialPrice: { input: 35, output: 175, cacheCreation: 43.75, cacheRead: 3.5 }
+  },
+  {
+    id: 'claude-opus-4-8',
+    label: 'Opus',
+    officialPrice: { input: 35, output: 175, cacheCreation: 43.75, cacheRead: 3.5 }
+  },
+  {
+    id: 'claude-opus-4-7',
+    label: 'Opus',
+    officialPrice: { input: 35, output: 175, cacheCreation: 43.75, cacheRead: 3.5 }
+  },
+  {
+    id: 'claude-opus-4-6',
+    label: 'Opus',
+    officialPrice: { input: 35, output: 175, cacheCreation: 43.75, cacheRead: 3.5 }
+  },
+  {
+    id: 'claude-sonnet-4-6',
+    label: 'Sonnet',
+    officialPrice: { input: 21, output: 105, cacheCreation: 26.25, cacheRead: 2.1 }
+  },
+  {
+    id: 'claude-haiku-4-5',
+    label: 'Haiku',
+    officialPrice: { input: 7, output: 35, cacheCreation: 8.75, cacheRead: 0.7 }
+  }
+] as const
 
-const activeGroupInfo = computed(() => {
-  return groupInfoByModel[selectedModel.value as keyof typeof groupInfoByModel] || groupInfo
+const gptModels = [
+  {
+    id: 'gpt-5.6-sol',
+    label: 'GPT-5.6 Sol',
+    officialPrice: { input: 4, output: 20, cacheCreation: 5, cacheRead: 0.4 }
+  },
+  {
+    id: 'gpt-5.6-terra',
+    label: 'GPT-5.6 Terra',
+    officialPrice: { input: 2, output: 12, cacheCreation: 2.5, cacheRead: 0.2 }
+  },
+  {
+    id: 'gpt-5.6-luna',
+    label: 'GPT-5.6 Luna',
+    officialPrice: { input: 0.2, output: 1.2, cacheCreation: 0.25, cacheRead: 0.02 }
+  },
+  {
+    id: 'gpt-5.5',
+    label: 'GPT-5.5',
+    officialPrice: { input: 5, output: 30, cacheCreation: null, cacheRead: 0.5 }
+  },
+  {
+    id: 'gpt-5.4',
+    label: 'GPT-5.4',
+    officialPrice: { input: 2.5, output: 15, cacheCreation: null, cacheRead: 0.25 }
+  },
+  {
+    id: 'gpt-5.4-mini',
+    label: 'GPT-5.4 Mini',
+    officialPrice: { input: 0.75, output: 4.5, cacheCreation: null, cacheRead: 0.075 }
+  },
+] as const
+
+const activeGroup = computed(
+  () => modelGroups.find((group) => group.id === activeCategory.value) ?? modelGroups[0]
+)
+
+const activeModels = computed(() => {
+  return activeCategory.value === 'claude' ? claudeModels : gptModels
 })
 
-type ModelPricing = {
-  id: string
-  groupId: string
-  officialPrice: {
-    input: number
-    output: number
-    cacheRead: number
-    cacheCreation?: number
-  }
-  description: string
+const formatPrice = (value: number | null) => {
+  if (value === null) return '—'
+  return `$${value.toFixed(2)}`
 }
-
-const showCacheCreationColumn = computed(() => selectedModel.value !== 'codex')
-
-const formatPrice = (value: number) => `¥${value.toFixed(2)}/1M`
-
-const getGroupPrice = (model: ModelPricing) => {
-  const discount = parseFloat(activeGroupInfo.value.find((g) => g.id === selectedGroup.value)?.discount || '100') / 100
-
-  return {
-    input: model.officialPrice.input * discount,
-    output: model.officialPrice.output * discount,
-    cacheCreation: model.officialPrice.cacheCreation != null ? model.officialPrice.cacheCreation * discount : undefined,
-    cacheRead: model.officialPrice.cacheRead * discount
-  }
-}
-
-// Model pricing data (JSON structure)
-const modelPricingData: Record<'claude-code' | 'codex', ModelPricing[]> = {
-  'claude-code': [
-    {
-      id: 'claude-opus-4-8',
-      groupId: 'lite',
-      officialPrice: {
-        input: 35.0,
-        output: 175.0,
-        cacheCreation: 43.75,
-        cacheRead: 3.5
-      },
-      description: 'Claude Opus 4.8'
-    },
-    {
-      id: 'claude-opus-4-7',
-      groupId: 'lite',
-      officialPrice: {
-        input: 35.0,
-        output: 175.0,
-        cacheCreation: 43.75,
-        cacheRead: 3.5
-      },
-      description: 'Claude Opus 4.7'
-    },
-    {
-      id: 'claude-opus-4-6',
-      groupId: 'lite',
-      officialPrice: {
-        input: 35.0,
-        output: 175.0,
-        cacheCreation: 43.75,
-        cacheRead: 3.5
-      },
-      description: 'Claude Opus 4.6'
-    },
-    {
-      id: 'claude-sonnet-4-6',
-      groupId: 'lite',
-      officialPrice: {
-        input: 21.0,
-        output: 105.0,
-        cacheCreation: 26.25,
-        cacheRead: 2.1
-      },
-      description: 'Claude Sonnet 4.6'
-    },
-    {
-      id: 'claude-haiku-4-5',
-      groupId: 'lite',
-      officialPrice: {
-        input: 7.0,
-        output: 35.0,
-        cacheCreation: 8.75,
-        cacheRead: 0.7
-      },
-      description: 'Claude Haiku 4.5'
-    }
-  ],
-  'codex': [
-    {
-      id: 'gpt-5.5',
-      groupId: 'lite',
-      officialPrice: {
-        input: 35.0,
-        output: 210.0,
-        cacheRead: 3.5
-      },
-      description: 'Codex GPT-5.5'
-    },
-    {
-      id: 'gpt-5.4',
-      groupId: 'lite',
-      officialPrice: {
-        input: 17.5,
-        output: 105.0,
-        cacheRead: 1.75
-      },
-      description: 'Codex GPT-5.4'
-    },
-    {
-      id: 'gpt-5.4-mini',
-      groupId: 'lite',
-      officialPrice: {
-        input: 5.25,
-        output: 31.5,
-        cacheRead: 0.53
-      },
-      description: 'Codex GPT-5.4 Mini'
-    }
-  ]
-}
-
-// Computed property for current model data
-const currentModelData = computed(() => {
-  const allModels = modelPricingData[selectedModel.value as keyof typeof modelPricingData] || []
-  
-  // Filter by group when in group view
-  if (priceView.value === 'group') {
-    return allModels.filter(model => model.groupId === selectedGroup.value)
-  }
-  
-  // Show all models when in official view
-  return allModels
-})
 
 onMounted(() => {
   authStore.checkAuth()
-  if (!appStore.publicSettingsLoaded) {
-    appStore.fetchPublicSettings()
-  }
 })
 </script>
