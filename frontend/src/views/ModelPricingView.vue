@@ -93,16 +93,20 @@
                 <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.input) }}</strong>
               </div>
               <div class="flex items-center justify-between">
-                <span>输出</span>
-                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.output) }}</strong>
+                <span>缓存输入</span>
+                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.cachedInput ?? model.officialPrice.cacheRead) }}</strong>
               </div>
-              <div v-if="model.officialPrice.cacheCreation !== null" class="flex items-center justify-between">
-                <span>缓存创建</span>
-                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.cacheCreation) }}</strong>
+              <div v-if="model.officialPrice.cacheWrite !== null" class="flex items-center justify-between">
+                <span>缓存写入</span>
+                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.cacheWrite) }}</strong>
               </div>
               <div v-if="model.officialPrice.cacheRead !== null" class="flex items-center justify-between">
                 <span>缓存读取</span>
                 <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.cacheRead) }}</strong>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>输出</span>
+                <strong class="text-slate-900 dark:text-white">{{ formatPrice(model.officialPrice.output) }}</strong>
               </div>
             </div>
           </div>
@@ -112,7 +116,7 @@
       <section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div class="mb-4 flex items-center justify-between">
           <h2 class="text-xl font-semibold">价格说明</h2>
-          <span class="text-sm text-slate-500 dark:text-slate-400">单位：¥/1M</span>
+          <span class="text-sm text-slate-500 dark:text-slate-400">单位：$/1M</span>
         </div>
 
         <div class="overflow-x-auto">
@@ -121,18 +125,20 @@
               <tr class="border-b border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300">
                 <th class="px-3 py-3 font-medium">模型</th>
                 <th class="px-3 py-3 font-medium">输入</th>
-                <th class="px-3 py-3 font-medium">输出</th>
-                <th class="px-3 py-3 font-medium">缓存创建</th>
+                <th class="px-3 py-3 font-medium">缓存输入</th>
+                <th class="px-3 py-3 font-medium">缓存写入</th>
                 <th class="px-3 py-3 font-medium">缓存读取</th>
+                <th class="px-3 py-3 font-medium">输出</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="model in activeModels" :key="model.id" class="border-b border-slate-100 dark:border-slate-800">
                 <td class="px-3 py-3 font-mono text-slate-900 dark:text-white">{{ model.id }}</td>
                 <td class="px-3 py-3">{{ formatPrice(model.officialPrice.input) }}</td>
-                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.output) }}</td>
-                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.cacheCreation) }}</td>
+                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.cachedInput ?? model.officialPrice.cacheRead) }}</td>
+                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.cacheWrite ?? model.officialPrice.cacheCreation) }}</td>
                 <td class="px-3 py-3">{{ formatPrice(model.officialPrice.cacheRead) }}</td>
+                <td class="px-3 py-3">{{ formatPrice(model.officialPrice.output) }}</td>
               </tr>
             </tbody>
           </table>
@@ -163,40 +169,55 @@ const modelGroups = [
 
 const activeCategory = ref<(typeof modelGroups)[number]['id']>('claude')
 
-const claudeModels = [
+type ModelPrice = {
+  input: number
+  cachedInput?: number
+  cacheWrite?: number
+  cacheRead?: number
+  cacheCreation?: number | null
+  output: number
+}
+
+type ModelPricingEntry = {
+  id: string
+  label: string
+  officialPrice: ModelPrice
+}
+
+const claudeModels: ModelPricingEntry[] = [
   {
     id: 'claude-opus-5',
     label: 'Opus',
-    officialPrice: { input: 35, output: 175, cacheCreation: 43.75, cacheRead: 3.5 }
+    officialPrice: { input: 5, cachedInput: 6.25, cacheWrite: 10, cacheRead: 0.5, output: 25 }
   },
   {
     id: 'claude-opus-4-8',
     label: 'Opus',
-    officialPrice: { input: 35, output: 175, cacheCreation: 43.75, cacheRead: 3.5 }
+    officialPrice: { input: 5, cachedInput: 6.25, cacheWrite: 10, cacheRead: 0.5, output: 25 }
   },
   {
     id: 'claude-opus-4-7',
     label: 'Opus',
-    officialPrice: { input: 35, output: 175, cacheCreation: 43.75, cacheRead: 3.5 }
+    officialPrice: { input: 5, cachedInput: 6.25, cacheWrite: 10, cacheRead: 0.5, output: 25 }
   },
   {
     id: 'claude-opus-4-6',
     label: 'Opus',
-    officialPrice: { input: 35, output: 175, cacheCreation: 43.75, cacheRead: 3.5 }
+    officialPrice: { input: 5, cachedInput: 6.25, cacheWrite: 10, cacheRead: 0.5, output: 25 }
   },
   {
     id: 'claude-sonnet-4-6',
     label: 'Sonnet',
-    officialPrice: { input: 21, output: 105, cacheCreation: 26.25, cacheRead: 2.1 }
+    officialPrice: { input: 3, cachedInput: 3.75, cacheWrite: 6, cacheRead: 0.3, output: 15 }
   },
   {
     id: 'claude-haiku-4-5',
     label: 'Haiku',
-    officialPrice: { input: 7, output: 35, cacheCreation: 8.75, cacheRead: 0.7 }
+    officialPrice: { input: 1, cachedInput: 1.25, cacheWrite: 2, cacheRead: 0.1, output: 7 }
   }
-] as const
+]
 
-const gptModels = [
+const gptModels: ModelPricingEntry[] = [
   {
     id: 'gpt-5.6-sol',
     label: 'GPT-5.6 Sol',
@@ -237,8 +258,8 @@ const activeModels = computed(() => {
   return activeCategory.value === 'claude' ? claudeModels : gptModels
 })
 
-const formatPrice = (value: number | null) => {
-  if (value === null) return '—'
+const formatPrice = (value: number | null | undefined) => {
+  if (value == null) return '—'
   return `$${value.toFixed(2)}`
 }
 
