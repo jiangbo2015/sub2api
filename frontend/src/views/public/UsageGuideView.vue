@@ -211,7 +211,7 @@ windows_wsl_setup_acknowledged = true
 
 [model_providers.OpenAI]
 name = "OpenAI"
-base_url = "http://localhost:3000"
+base_url = "https://pineai.net"
 wire_api = "responses"
 requires_openai_auth = true
 
@@ -300,7 +300,7 @@ goals = true</code></pre>
                       复制
                     </button>
                   </div>
-                  <pre class="overflow-x-auto p-4 text-sm leading-relaxed text-gray-100"><code>export ANTHROPIC_BASE_URL="http://localhost:3000"
+                  <pre class="overflow-x-auto p-4 text-sm leading-relaxed text-gray-100"><code>export ANTHROPIC_BASE_URL="https://pineai.net"
 export ANTHROPIC_AUTH_TOKEN="YOUR_API_KEY"
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1</code></pre>
                 </div>
@@ -312,7 +312,7 @@ export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1</code></pre>
                       复制
                     </button>
                   </div>
-                  <pre class="overflow-x-auto p-4 text-sm leading-relaxed text-gray-100"><code>set ANTHROPIC_BASE_URL=http://localhost:3000
+                  <pre class="overflow-x-auto p-4 text-sm leading-relaxed text-gray-100"><code>set ANTHROPIC_BASE_URL=https://pineai.net
 set ANTHROPIC_AUTH_TOKEN=YOUR_API_KEY
 set CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1</code></pre>
                 </div>
@@ -324,7 +324,7 @@ set CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1</code></pre>
                       复制
                     </button>
                   </div>
-                  <pre class="overflow-x-auto p-4 text-sm leading-relaxed text-gray-100"><code>$env:ANTHROPIC_BASE_URL="http://localhost:3000"
+                  <pre class="overflow-x-auto p-4 text-sm leading-relaxed text-gray-100"><code>$env:ANTHROPIC_BASE_URL="https://pineai.net"
 $env:ANTHROPIC_AUTH_TOKEN="YOUR_API_KEY"
 $env:CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1</code></pre>
                 </div>
@@ -348,7 +348,7 @@ $env:CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1</code></pre>
                   </div>
                   <pre class="overflow-x-auto p-4 text-sm leading-relaxed text-gray-100"><code>{
   "env": {
-    "ANTHROPIC_BASE_URL": "http://localhost:3000",
+    "ANTHROPIC_BASE_URL": "https://pineai.net",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
